@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMSSDK</string>
+    <string name="smssdk_bind_mobile_show">注册或绑定手机演示</string>
+    <string name="smssdk_contact">通讯录好友</string>
+    <string name="smssdk_appkey_dialog_title">请输入您的应用信息</string>
+    <string name="smssdk_appkey">AppKey</string>
+    <string name="smssdk_appkey_hint">请输入您的AppKey</string>
+    <string name="smssdk_appsecret">AppSecret</string>
+    <string name="smssdk_appsecrethint">请输入您的AppSecret</string>
+</resources>

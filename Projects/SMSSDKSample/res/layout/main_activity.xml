@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ff454a4b" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:background="#ff303537"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="#ffcfcfcf"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ff1a1c1d" />
+
+    <Button
+        android:id="@+id/btn_bind_phone"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:layout_marginBottom="20dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:layout_marginTop="40dip"
+        android:background="@drawable/smssdk_corners_bg"
+        android:text="@string/smssdk_bind_mobile_show"
+        android:textColor="#464646"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_contact"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:background="@drawable/smssdk_corners_bg" >
+
+        <TextView
+            android:id="@+id/tv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/smssdk_contact"
+            android:textColor="#ff464646"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:layout_toRightOf="@+id/tv_contact"
+            android:background="@drawable/smssdk_circular_bg"
+            android:gravity="center"
+            android:minHeight="16dp"
+            android:minWidth="16dp"
+            android:textColor="#ffffff"
+            android:textSize="11sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

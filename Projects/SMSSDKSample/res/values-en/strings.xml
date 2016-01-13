@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMSSDK</string>
+    <string name="smssdk_bind_mobile_show">Demonstration of register or binding mobile </string>
+    <string name="smssdk_contact">Contact</string>
+    <string name="smssdk_appkey_dialog_title">Please input App information</string>
+    <string name="smssdk_appkey">AppKey</string>
+    <string name="smssdk_appkey_hint">Please input AppKey</string>
+    <string name="smssdk_appsecret">AppSecret</string>
+    <string name="smssdk_appsecrethint">Please input AppSecret</string>
+</resources>
