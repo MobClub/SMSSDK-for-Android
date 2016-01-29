@@ -37,13 +37,13 @@ import cn.smssdk.gui.ContactsPage;
 import cn.smssdk.gui.RegisterPage;
 
 //请注意：测试短信条数限制发送数量：20条/天，APP开发完成后请到mob.com后台提交审核，获得不限制条数的免费短信权限。
-
 public class MainActivity extends Activity implements OnClickListener, Callback {
 	// 填写从短信SDK应用后台注册得到的APPKEY
-	private static String APPKEY = "";
+	//此APPKEY仅供测试使用，且不定期失效，请到mob.com后台申请正式APPKEY
+	private static String APPKEY = "f3fc6baa9ac4";
 
 	// 填写从短信SDK应用后台注册得到的APPSECRET
-	private static String APPSECRET = "";
+	private static String APPSECRET = "7f3dedcb36d92deebcb373af921d635a";
 
 	// 短信注册，随机产生头像
 	private static final String[] AVATARS = {
@@ -148,6 +148,9 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 	private void initSDK() {
 		// 初始化短信SDK
 		SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
+		if (APPKEY.equalsIgnoreCase("f3fc6baa9ac4") ) {
+			Toast.makeText(this,"此APPKEY仅供测试使用，且不定期失效，请到mob.com后台申请正式APPKEY",Toast.LENGTH_SHORT).show();
+		}
 		final Handler handler = new Handler(this);
 		EventHandler eventHandler = new EventHandler() {
 			public void afterEvent(int event, int result, Object data) {
