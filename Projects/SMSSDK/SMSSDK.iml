@@ -80,8 +80,8 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="MobTools" level="project" />
-    <orderEntry type="library" exported="" name="MobCommons" level="project" />
+    <orderEntry type="library" exported="" name="MobTools-2016.0131.1739" level="project" />
     <orderEntry type="library" exported="" name="SMSSDK-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="MobCommons-2016.0131.1739" level="project" />
   </component>
 </module>
