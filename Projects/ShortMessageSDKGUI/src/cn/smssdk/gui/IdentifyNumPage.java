@@ -142,6 +142,9 @@ public class IdentifyNumPage extends FakeActivity implements OnClickListener,
 			countDown();
 		}
 
+		/* 注册短信接受Receiver
+		 * 如被某鹅误报，可去掉此处代码
+		 */
 		try {
 			if (DeviceHelper.getInstance(activity).checkPermission("android.permission.RECEIVE_SMS")) {
 				smsReceiver = new SMSReceiver(new SMSSDK.VerifyCodeReadListener() {
