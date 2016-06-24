@@ -21,7 +21,7 @@
 	<string name="smssdk_error_desc_455">签名无效</string>
 	<string name="smssdk_error_desc_456">手机号码错误</string>
 	<string name="smssdk_error_desc_457">非法手机号</string>
-	<string name="smssdk_error_desc_458">手机号码在黑名单中</string>
+	<string name="smssdk_error_desc_458">AppKey在黑名单中</string>
 	<string name="smssdk_error_desc_459">无appKey的控制数据</string>
 	<string name="smssdk_error_desc_460">无权限发送短信</string>
 	<string name="smssdk_error_desc_461">不支持该地区发送短信</string>
@@ -45,12 +45,12 @@
 	
 	<string name="smssdk_error_desc_500">服务器内部错误</string>
 	
-	<string name="smssdk_error_desc_600">API使用受限制</string>
-	<string name="smssdk_error_desc_601">短信发送受限</string>
+	<string name="smssdk_error_desc_600">请求太频繁，API使用受限制</string>
+	<string name="smssdk_error_desc_601">开关未打开，短信发送受限</string>
 	<string name="smssdk_error_desc_602">无法发送此地区短信</string>
 	<string name="smssdk_error_desc_603">请填写正确的手机号码</string>
 	<string name="smssdk_error_desc_604">当前服务暂不支持此国家，请选择其它国家</string>
-
+	<string name="smssdk_error_desc_605">没有权限连接服务端</string>
 	
 	<string name="smssdk_error_detail_400">客户端请求不能被识别。</string>
 	<string name="smssdk_error_detail_401">请求的token为空。</string>
@@ -72,7 +72,7 @@
 	<string name="smssdk_error_detail_455">签名检验。</string>
 	<string name="smssdk_error_detail_456">提交的手机号码或者区号为空。</string>
 	<string name="smssdk_error_detail_457">提交的手机号格式不正确（包括手机的区号）。</string>
-	<string name="smssdk_error_detail_458">手机号码在发送黑名单中。</string>
+	<string name="smssdk_error_detail_458">AppKey在发送黑名单中</string>
 	<string name="smssdk_error_detail_459">获取appKey控制发送短信的数据失败。</string>
 	<string name="smssdk_error_detail_460">没有打开客户端发送短信的开关。</string>
 	<string name="smssdk_error_detail_461">没有开通给当前地区发送短信的功能。</string>
@@ -96,10 +96,11 @@
 	
 	<string name="smssdk_error_detail_500">服务端程序报错。</string>
 	
-	<string name="smssdk_error_detail_600">API使用受限制</string>
-	<string name="smssdk_error_detail_601">短信发送受限</string>
+	<string name="smssdk_error_detail_600">请求太频繁，API使用受限制</string>
+	<string name="smssdk_error_detail_601">开关未打开，短信发送受限</string>
 	<string name="smssdk_error_detail_602">无法发送此地区短信</string>
 	<string name="smssdk_error_detail_603">请填写正确的手机号码</string>
 	<string name="smssdk_error_detail_604">当前服务暂不支持此国家，请选择其它国家</string>
+	<string name="smssdk_error_detail_605">没有权限连接服务端</string>
 	
 </resources>

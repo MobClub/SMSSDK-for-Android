@@ -16,12 +16,12 @@
 	<string name="smssdk_error_desc_450">Permission denied</string>
 	<string name="smssdk_error_desc_451">User-Agent is empty</string>
 	<string name="smssdk_error_desc_452">Bad Format User-Agent</string>
-	<string name="smssdk_error_desc_453">Decrypt faield</string>
+	<string name="smssdk_error_desc_453">Decrypt failed</string>
 	<string name="smssdk_error_desc_454">Bad Format data</string>
 	<string name="smssdk_error_desc_455">Invalid signature</string>
 	<string name="smssdk_error_desc_456">Wrong phone number</string>
 	<string name="smssdk_error_desc_457">Phone number is illegal</string>
-	<string name="smssdk_error_desc_458">Blacked phone number</string>
+	<string name="smssdk_error_desc_458">Blacked appKey</string>
 	<string name="smssdk_error_desc_459">Unable to obtain data</string>
 	<string name="smssdk_error_desc_460">Permission denied</string>
 	<string name="smssdk_error_desc_461">Permission denied</string>
@@ -45,12 +45,13 @@
 	
 	<string name="smssdk_error_desc_500">Internal Server Error</string>
 	
-	<string name="smssdk_error_desc_600">API is limited</string>
+	<string name="smssdk_error_desc_600">frequency too much,request is limited</string>
 	<string name="smssdk_error_desc_601">SMS permission denied</string>
 	<string name="smssdk_error_desc_602">cannot send message of this zone</string>
 	<string name="smssdk_error_desc_603">Please input the correct phone number</string>
 	<string name="smssdk_error_desc_604">Country not support, please choose another one</string>
-	
+	<string name="smssdk_error_desc_605">No Permission to request the server</string>
+
 	<string name="smssdk_error_detail_400">The request could not be identified</string>
 	<string name="smssdk_error_detail_401">The request token is empty</string>
 	<string name="smssdk_error_detail_402">The request token does not exist</string>
@@ -71,7 +72,7 @@
 	<string name="smssdk_error_detail_455">Invalid signature</string>
 	<string name="smssdk_error_detail_456">The submitted phone number or country code is empty</string>
 	<string name="smssdk_error_detail_457">The submitted phone number or country code is incorrect</string>
-	<string name="smssdk_error_detail_458">This phone number had been black</string>
+	<string name="smssdk_error_detail_458">This appKey has been blocked</string>
 	<string name="smssdk_error_detail_459">Unable to obtain data related to the appkey</string>
 	<string name="smssdk_error_detail_460">Please turn on the switch to sending text messages by clients</string>
 	<string name="smssdk_error_detail_461">Send text messages to the region is not supported</string>
@@ -95,9 +96,10 @@
 	
 	<string name="smssdk_error_detail_500">Internal Server Error</string>
 	
-	<string name="smssdk_error_detail_600">API is limited</string>
+	<string name="smssdk_error_detail_600">frequency too much,API is limited</string>
 	<string name="smssdk_error_detail_601">SMS permission denied</string>
 	<string name="smssdk_error_detail_602">cannot send message of this country or zone</string>
 	<string name="smssdk_error_detail_603">Please input the correct phone number</string>
 	<string name="smssdk_error_detail_604">Country not support, please choose another one</string>
+	<string name="smssdk_error_detail_605">No Permission to request the server</string>
 </resources>

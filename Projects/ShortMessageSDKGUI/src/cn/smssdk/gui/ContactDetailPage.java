@@ -13,6 +13,7 @@ import java.util.HashMap;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.Html;
 import android.view.View;
@@ -130,7 +131,9 @@ public class ContactDetailPage extends FakeActivity implements OnClickListener{
 		if (resId > 0) {
 			intent.putExtra("sms_body", activity.getString(resId));
 		}
-		startActivity(intent);
+		if (intent.resolveActivity(this.getContext().getPackageManager()) != null) {
+			startActivity(intent);
+		}
 	}
 
 	/**有多个电话号码时，弹出的选择对话框*/
