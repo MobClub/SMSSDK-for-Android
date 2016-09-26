@@ -222,7 +222,7 @@ public class RegisterPage extends FakeActivity implements OnClickListener,
 		SMSSDK.registerEventHandler(handler);
 	}
 
-	public void onPause() {
+	public void onDestroy() {
 		SMSSDK.unregisterEventHandler(handler);
 	}
 
@@ -329,7 +329,7 @@ public class RegisterPage extends FakeActivity implements OnClickListener,
 	public void showDialog(final String phone, final String code) {
 		int resId = getStyleRes(activity, "CommonDialog");
 		if (resId > 0) {
-			final String phoneNum = "+" + code + " " + splitPhoneNum(phone);
+			final String phoneNum = code + " " + splitPhoneNum(phone);
 			final Dialog dialog = new Dialog(getContext(), resId);
 
 			LinearLayout layout = SendMsgDialogLayout.create(getContext());
