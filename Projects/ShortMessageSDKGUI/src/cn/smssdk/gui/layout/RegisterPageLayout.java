@@ -7,7 +7,7 @@
  */
 package cn.smssdk.gui.layout;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 import android.content.Context;
 import android.text.InputType;
@@ -42,7 +42,7 @@ public class RegisterPageLayout extends BasePageLayout {
 		tvParams.gravity = Gravity.CENTER_VERTICAL;
 		tv.setLayoutParams(tvParams);
 		tv.setPadding(SizeHelper.fromPxWidth(14), 0, SizeHelper.fromPxWidth(14), 0);
-		int resid = R.getStringRes(context, "smssdk_country");
+		int resid = ResHelper.getStringRes(context, "smssdk_country");
 		tv.setText(resid);
 		tv.setTextColor(0xff000000);
 		tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPxWidth(25));
@@ -83,7 +83,7 @@ public class RegisterPageLayout extends BasePageLayout {
 		countryNum.setGravity(Gravity.CENTER);
 		countryNum.setTextColor(0xff353535);
 		countryNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPxWidth(25));
-		resid = R.getBitmapRes(context, "smssdk_input_bg_focus");
+		resid = ResHelper.getBitmapRes(context, "smssdk_input_bg_focus");
 		countryNum.setBackgroundResource(resid);
 		phoneLayout.addView(countryNum);
 
@@ -91,7 +91,7 @@ public class RegisterPageLayout extends BasePageLayout {
 		LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT);
 		wrapperParams.weight = 1;
 		wrapperLayout.setLayoutParams(wrapperParams);
-		resid = R.getBitmapRes(context, "smssdk_input_bg_special_focus");
+		resid = ResHelper.getBitmapRes(context, "smssdk_input_bg_special_focus");
 		wrapperLayout.setBackgroundResource(resid);
 
 		EditText writePhone = new EditText(context);
@@ -102,7 +102,7 @@ public class RegisterPageLayout extends BasePageLayout {
 		writePhoneParams.weight = 1;
 		writePhone.setLayoutParams(writePhoneParams);
 		writePhone.setBackgroundDrawable(null);
-		resid = R.getStringRes(context, "smssdk_write_mobile_phone");
+		resid = ResHelper.getStringRes(context, "smssdk_write_mobile_phone");
 		writePhone.setHint(resid);
 		writePhone.setInputType(InputType.TYPE_CLASS_PHONE);
 		writePhone.setTextColor(0xff353535);
@@ -115,7 +115,7 @@ public class RegisterPageLayout extends BasePageLayout {
 		imageParams.gravity = Gravity.CENTER_VERTICAL;
 		imageParams.rightMargin = SizeHelper.fromPxWidth(20);
 		image.setLayoutParams(imageParams);
-		resid = R.getBitmapRes(context, "smssdk_clear_search");
+		resid = ResHelper.getBitmapRes(context, "smssdk_clear_search");
 		image.setBackgroundResource(resid);
 		image.setScaleType(ScaleType.CENTER_INSIDE);
 		image.setVisibility(View.GONE);
@@ -128,9 +128,9 @@ public class RegisterPageLayout extends BasePageLayout {
 		LinearLayout.LayoutParams nextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,SizeHelper.fromPxWidth(72));
 		nextParams.setMargins(SizeHelper.fromPxWidth(26), SizeHelper.fromPxWidth(36), SizeHelper.fromPxWidth(26), 0);
 		nextBtn.setLayoutParams(nextParams);
-		resid = R.getBitmapRes(context, "smssdk_btn_disenable");
+		resid = ResHelper.getBitmapRes(context, "smssdk_btn_disenable");
 		nextBtn.setBackgroundResource(resid);
-		resid = R.getStringRes(context, "smssdk_next");
+		resid = ResHelper.getStringRes(context, "smssdk_next");
 		nextBtn.setText(resid);
 		nextBtn.setTextColor(0xffffffff);
 		nextBtn.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPxWidth(25));

@@ -7,7 +7,7 @@
  */
 package cn.smssdk.gui.layout;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -45,7 +45,7 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		identifyNotifyParams.topMargin = SizeHelper.fromPxWidth(32);
 		identifyNotify.setGravity(Gravity.CENTER);
 		identifyNotify.setLayoutParams(identifyNotifyParams);
-		int resid = R.getStringRes(context, "smssdk_make_sure_mobile_detail");
+		int resid = ResHelper.getStringRes(context, "smssdk_make_sure_mobile_detail");
 		identifyNotify.setText(resid);
 		identifyNotify.setTextColor(0xff999999);
 		identifyNotify.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(24));
@@ -66,7 +66,7 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		LinearLayout.LayoutParams inputBgParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,SizeHelper.fromPxWidth(72));
 		inputBgParams.topMargin = SizeHelper.fromPxWidth(38);
 		inputBg.setLayoutParams(inputBgParams);
-		resid = R.getBitmapRes(context, "smssdk_input_bg_focus");
+		resid = ResHelper.getBitmapRes(context, "smssdk_input_bg_focus");
 		inputBg.setBackgroundResource(resid);
 		wrapperLayout.addView(inputBg);
 
@@ -75,7 +75,7 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		EditText putIdentify = new EditText(context);
 		putIdentify.setLayoutParams(putIdentifyParams);
 		putIdentify.setId(Res.id.et_put_identify);
-		resid = R.getStringRes(context, "smssdk_write_identify_code");
+		resid = ResHelper.getStringRes(context, "smssdk_write_identify_code");
 		putIdentify.setHint(resid);
 		putIdentify.setBackgroundColor(0xffffffff);
 		putIdentify.setSingleLine(true);
@@ -89,7 +89,7 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		ImageView clearImage = new ImageView(context);
 		clearImage.setLayoutParams(clearImageParams);
 		clearImage.setId(Res.id.iv_clear);
-		resid = R.getBitmapRes(context, "smssdk_clear_search");
+		resid = ResHelper.getBitmapRes(context, "smssdk_clear_search");
 		clearImage.setImageResource(resid);
 		clearImage.setScaleType(ScaleType.FIT_CENTER);
 		clearImage.setVisibility(View.GONE);
@@ -102,9 +102,9 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		soundParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 		soundParams.addRule(RelativeLayout.ALIGN_RIGHT, Res.id.et_put_identify);
 		soundBtn.setLayoutParams(soundParams);
-		resid = R.getBitmapRes(context, "smssdk_btn_disenable");
+		resid = ResHelper.getBitmapRes(context, "smssdk_btn_disenable");
 		soundBtn.setBackgroundResource(resid);
-		resid = R.getStringRes(context, "smssdk_send_sounds");
+		resid = ResHelper.getStringRes(context, "smssdk_send_sounds");
 		soundBtn.setText(resid);
 		soundBtn.setTextColor(Res.color.smssdk_white);
 		soundBtn.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(20));
@@ -119,7 +119,7 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		unreceiveParams.setMargins(0, SizeHelper.fromPxWidth(34), 0, SizeHelper.fromPxWidth(30));
 		unreceive.setLayoutParams(unreceiveParams);
 		unreceive.setGravity(Gravity.CENTER);
-		resid = R.getStringRes(context, "smssdk_receive_msg");
+		resid = ResHelper.getStringRes(context, "smssdk_receive_msg");
 		unreceive.setText(resid);
 		unreceive.setTextColor(0xff5c5c5c);
 		unreceive.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(22));
@@ -130,9 +130,9 @@ public class IdentifyNumPageLayout extends BasePageLayout {
 		submitBtn.setId(Res.id.btn_submit);
 		LinearLayout.LayoutParams submitParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,SizeHelper.fromPxWidth(72));
 		submitBtn.setLayoutParams(submitParams);
-		resid = R.getBitmapRes(context, "smssdk_btn_disenable");
+		resid = ResHelper.getBitmapRes(context, "smssdk_btn_disenable");
 		submitBtn.setBackgroundResource(resid);
-		resid = R.getStringRes(context, "smssdk_next");
+		resid = ResHelper.getStringRes(context, "smssdk_next");
 		submitBtn.setText(resid);
 		submitBtn.setTextColor(0xffffffff);
 		submitBtn.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(24));

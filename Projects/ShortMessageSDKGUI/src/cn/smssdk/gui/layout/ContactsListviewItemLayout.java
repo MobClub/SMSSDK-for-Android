@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mob.tools.gui.AsyncImageView;
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 /**联系人列表表项布局*/
 public class ContactsListviewItemLayout {
@@ -74,7 +74,7 @@ public class ContactsListviewItemLayout {
 		addParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		addParams.addRule(RelativeLayout.CENTER_VERTICAL);
 		add.setLayoutParams(addParams);
-		int resid = R.getStringRes(context, "smssdk_add_contact");
+		int resid = ResHelper.getStringRes(context, "smssdk_add_contact");
 		add.setText(resid);
 		add.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPxWidth(22));
 		add.setTextColor(0xff797979);

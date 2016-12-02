@@ -7,7 +7,7 @@
  */
 package cn.smssdk.gui.layout;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -33,7 +33,7 @@ public class ListviewTitleLayout {
 		title.setLayoutParams(titleParams);
 		title.setPadding(SizeHelper.fromPxWidth(20), 0, 0, 0);
 		title.setLineSpacing(SizeHelper.fromPxWidth(8), 1);
-		int resid = R.getStringRes(context, "smssdk_regist");
+		int resid = ResHelper.getStringRes(context, "smssdk_regist");
 		title.setText(resid);
 		title.setTextColor(0xff999999);
 		title.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(26));

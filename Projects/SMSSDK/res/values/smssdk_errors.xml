@@ -44,6 +44,16 @@
 	<string name="smssdk_error_desc_478">当前手机号在当前应用内发送超过限额</string>
 	
 	<string name="smssdk_error_desc_500">服务器内部错误</string>
+	<string name="smssdk_error_desc_501">501 Not Implemented</string>
+	<string name="smssdk_error_desc_502">502 Bad Gateway</string>
+	<string name="smssdk_error_desc_503">503 Service Unavailable</string>
+	<string name="smssdk_error_desc_504">504 Gateway Timeout</string>
+	<string name="smssdk_error_desc_505">505 HTTP Version Not Supported</string>
+	<string name="smssdk_error_desc_506">506 Variant Also Negotiates (RFC 2295)</string>
+	<string name="smssdk_error_desc_507">507 Insufficient Storage (WebDAV; RFC 4918)</string>
+	<string name="smssdk_error_desc_508">508 Loop Detected (WebDAV; RFC 5842)</string>
+	<string name="smssdk_error_desc_510">510 Not Extended (RFC 2774)</string>
+	<string name="smssdk_error_desc_511">511 Network Authentication Required (RFC 6585)</string>
 	
 	<string name="smssdk_error_desc_600">请求太频繁，API使用受限制</string>
 	<string name="smssdk_error_desc_601">开关未打开，短信发送受限</string>
@@ -95,6 +105,16 @@
 	<string name="smssdk_error_detail_478">当前手机号码在当前应用下12小时内最多可发送文本验证码5条</string>
 	
 	<string name="smssdk_error_detail_500">服务端程序报错。</string>
+	<string name="smssdk_error_detail_501">501 Not Implemented</string>
+	<string name="smssdk_error_detail_502">502 Bad Gateway</string>
+	<string name="smssdk_error_detail_503">503 Service Unavailable</string>
+	<string name="smssdk_error_detail_504">504 Gateway Timeout</string>
+	<string name="smssdk_error_detail_505">505 HTTP Version Not Supported</string>
+	<string name="smssdk_error_detail_506">506 Variant Also Negotiates (RFC 2295)</string>
+	<string name="smssdk_error_detail_507">507 Insufficient Storage (WebDAV; RFC 4918)</string>
+	<string name="smssdk_error_detail_508">508 Loop Detected (WebDAV; RFC 5842)</string>
+	<string name="smssdk_error_detail_510">510 Not Extended (RFC 2774)</string>
+	<string name="smssdk_error_detail_511">511 Network Authentication Required (RFC 6585)</string>
 	
 	<string name="smssdk_error_detail_600">请求太频繁，API使用受限制</string>
 	<string name="smssdk_error_detail_601">开关未打开，短信发送受限</string>

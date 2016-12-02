@@ -44,6 +44,16 @@
 	<string name="smssdk_error_desc_478">current phone exceeds the text message limit in this App</string>
 	
 	<string name="smssdk_error_desc_500">Internal Server Error</string>
+	<string name="smssdk_error_desc_501">501 Not Implemented</string>
+	<string name="smssdk_error_desc_502">502 Bad Gateway</string>
+	<string name="smssdk_error_desc_503">503 Service Unavailable</string>
+	<string name="smssdk_error_desc_504">504 Gateway Timeout</string>
+	<string name="smssdk_error_desc_505">505 HTTP Version Not Supported</string>
+	<string name="smssdk_error_desc_506">506 Variant Also Negotiates (RFC 2295)</string>
+	<string name="smssdk_error_desc_507">507 Insufficient Storage (WebDAV; RFC 4918)</string>
+	<string name="smssdk_error_desc_508">508 Loop Detected (WebDAV; RFC 5842)</string>
+	<string name="smssdk_error_desc_510">510 Not Extended (RFC 2774)</string>
+	<string name="smssdk_error_desc_511">511 Network Authentication Required (RFC 6585)</string>
 	
 	<string name="smssdk_error_desc_600">frequency too much,request is limited</string>
 	<string name="smssdk_error_desc_601">SMS permission denied</string>
@@ -95,6 +105,16 @@
 	<string name="smssdk_error_detail_478">current phone can send 5 text messages per 12 hours in current app</string>
 	
 	<string name="smssdk_error_detail_500">Internal Server Error</string>
+	<string name="smssdk_error_detail_501">501 Not Implemented</string>
+	<string name="smssdk_error_detail_502">502 Bad Gateway</string>
+	<string name="smssdk_error_detail_503">503 Service Unavailable</string>
+	<string name="smssdk_error_detail_504">504 Gateway Timeout</string>
+	<string name="smssdk_error_detail_505">505 HTTP Version Not Supported</string>
+	<string name="smssdk_error_detail_506">506 Variant Also Negotiates (RFC 2295)</string>
+	<string name="smssdk_error_detail_507">507 Insufficient Storage (WebDAV; RFC 4918)</string>
+	<string name="smssdk_error_detail_508">508 Loop Detected (WebDAV; RFC 5842)</string>
+	<string name="smssdk_error_detail_510">510 Not Extended (RFC 2774)</string>
+	<string name="smssdk_error_detail_511">511 Network Authentication Required (RFC 6585)</string>
 	
 	<string name="smssdk_error_detail_600">frequency too much,API is limited</string>
 	<string name="smssdk_error_detail_601">SMS permission denied</string>

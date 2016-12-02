@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 /**确定发送短信对话框*/
 public class SendMsgDialogLayout {
@@ -34,7 +34,7 @@ public class SendMsgDialogLayout {
 		LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,SizeHelper.fromPxWidth(92));
 		dialogTitle.setLayoutParams(titleParams);
 		dialogTitle.setPadding(SizeHelper.fromPxWidth(20), SizeHelper.fromPxWidth(20),SizeHelper.fromPxWidth(20), SizeHelper.fromPxWidth(20));
-		int resid = R.getStringRes(context, "smssdk_make_sure_mobile_num");
+		int resid = ResHelper.getStringRes(context, "smssdk_make_sure_mobile_num");
 		dialogTitle.setText(resid);
 		dialogTitle.setTextColor(0xff3cac17);
 		dialogTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(32));
@@ -54,7 +54,7 @@ public class SendMsgDialogLayout {
 		hintParams.topMargin = SizeHelper.fromPxWidth(28);
 		dialogHint.setLayoutParams(hintParams);
 		dialogHint.setPadding(SizeHelper.fromPxWidth(18), 0, SizeHelper.fromPxWidth(18), 0);
-		resid = R.getStringRes(context, "smssdk_make_sure_mobile_detail");
+		resid = ResHelper.getStringRes(context, "smssdk_make_sure_mobile_detail");
 		dialogHint.setText(resid);
 		dialogHint.setTextColor(0xffffffff);
 		dialogHint.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(24));
@@ -86,11 +86,11 @@ public class SendMsgDialogLayout {
 		LinearLayout.LayoutParams okParams = new LinearLayout.LayoutParams(0,SizeHelper.fromPxWidth(80),1);
 		okParams.rightMargin = SizeHelper.fromPxWidth(1);
 		ok.setLayoutParams(okParams);
-		resid = R.getBitmapRes(context, "smssdk_dialog_btn_back");
+		resid = ResHelper.getBitmapRes(context, "smssdk_dialog_btn_back");
 		ok.setBackgroundResource(resid);
 		int padding = SizeHelper.fromPxWidth(18);
 		ok.setPadding(padding, padding, padding, padding);
-		resid = R.getStringRes(context, "smssdk_ok");
+		resid = ResHelper.getStringRes(context, "smssdk_ok");
 		ok.setText(resid);
 		ok.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(22));
 		ok.setTextColor(0xffffffff);
@@ -107,10 +107,10 @@ public class SendMsgDialogLayout {
 		LinearLayout.LayoutParams cancelParams = new LinearLayout.LayoutParams(0,SizeHelper.fromPxWidth(80),1);
 		cancelParams.rightMargin = SizeHelper.fromPxWidth(1);
 		cancel.setLayoutParams(cancelParams);
-		resid = R.getBitmapRes(context, "smssdk_dialog_btn_back");
+		resid = ResHelper.getBitmapRes(context, "smssdk_dialog_btn_back");
 		cancel.setBackgroundResource(resid);
 		cancel.setPadding(padding, padding, padding, padding);
-		resid = R.getStringRes(context, "smssdk_cancel");
+		resid = ResHelper.getStringRes(context, "smssdk_cancel");
 		cancel.setText(resid);
 		cancel.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(22));
 		cancel.setTextColor(0xffffffff);

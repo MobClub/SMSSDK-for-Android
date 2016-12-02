@@ -7,7 +7,7 @@
  */
 package cn.smssdk.gui.layout;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -37,7 +37,7 @@ public class BackVerifyDialogLayout {
 		dialogHint.setLayoutParams(hintParams);
 		dialogHint.setPadding(SizeHelper.fromPxWidth(18), 0, SizeHelper.fromPxWidth(18), 0);
 		dialogHint.setLineSpacing(SizeHelper.fromPxWidth(8), 1);
-		int resid = R.getStringRes(context, "smssdk_make_sure_mobile_detail");
+		int resid = ResHelper.getStringRes(context, "smssdk_make_sure_mobile_detail");
 		dialogHint.setText(resid);
 		dialogHint.setTextColor(0xffffffff);
 		dialogHint.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPxWidth(26));
@@ -60,11 +60,11 @@ public class BackVerifyDialogLayout {
 		LinearLayout.LayoutParams okParams = new LinearLayout.LayoutParams(0,SizeHelper.fromPxWidth(78),1);
 		okParams.leftMargin = SizeHelper.fromPxWidth(3);
 		ok.setLayoutParams(okParams);
-		resid = R.getBitmapRes(context, "smssdk_dialog_btn_back");
+		resid = ResHelper.getBitmapRes(context, "smssdk_dialog_btn_back");
 		ok.setBackgroundResource(resid);
 		int padding = SizeHelper.fromPxWidth(8);
 		ok.setPadding(padding, padding, padding, padding);
-		resid = R.getStringRes(context, "smssdk_ok");
+		resid = ResHelper.getStringRes(context, "smssdk_ok");
 		ok.setText(resid);
 		ok.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(22));
 		ok.setTextColor(0xffffffff);
@@ -81,10 +81,10 @@ public class BackVerifyDialogLayout {
 		LinearLayout.LayoutParams cancelParams = new LinearLayout.LayoutParams(0,SizeHelper.fromPxWidth(78),1);
 		cancelParams.rightMargin = SizeHelper.fromPxWidth(3);
 		cancel.setLayoutParams(cancelParams);
-		resid = R.getBitmapRes(context, "smssdk_dialog_btn_back");
+		resid = ResHelper.getBitmapRes(context, "smssdk_dialog_btn_back");
 		cancel.setBackgroundResource(resid);
 		cancel.setPadding(padding, padding, padding, padding);
-		resid = R.getStringRes(context, "smssdk_cancel");
+		resid = ResHelper.getStringRes(context, "smssdk_cancel");
 		cancel.setText(resid);
 		cancel.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(22));
 		cancel.setTextColor(0xffffffff);

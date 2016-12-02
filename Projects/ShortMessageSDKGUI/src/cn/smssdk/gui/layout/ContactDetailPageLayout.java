@@ -7,7 +7,7 @@
  */
 package cn.smssdk.gui.layout;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -44,7 +44,7 @@ public class ContactDetailPageLayout extends BasePageLayout {
 		imageParams.setMargins(margin, margin, margin, margin);
 		contactIcon.setLayoutParams(imageParams);
 		contactIcon.setScaleType(ScaleType.FIT_CENTER);
-		int resid = R.getBitmapRes(context, "smssdk_default_avatar");
+		int resid = ResHelper.getBitmapRes(context, "smssdk_default_avatar");
 		contactIcon.setBackgroundResource(resid);
 		wrapperLayout.addView(contactIcon);
 
@@ -74,7 +74,7 @@ public class ContactDetailPageLayout extends BasePageLayout {
 		TextView tvPhone = new TextView(context);
 		LinearLayout.LayoutParams tvPhoneParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 		tvPhone.setLayoutParams(tvPhoneParams);
-		resid = R.getStringRes(context, "smssdk_contacts_phones");
+		resid = ResHelper.getStringRes(context, "smssdk_contacts_phones");
 		tvPhone.setText(resid);
 		tvPhone.setTextColor(0xff000000);
 		tvPhone.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(20));
@@ -104,9 +104,9 @@ public class ContactDetailPageLayout extends BasePageLayout {
 		LinearLayout.LayoutParams inviteParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,SizeHelper.fromPxWidth(72));
 		inviteParams.setMargins(SizeHelper.fromPxWidth(26), SizeHelper.fromPxWidth(22), SizeHelper.fromPxWidth(26), 0);
 		inviteBtn.setLayoutParams(inviteParams);
-		resid = R.getBitmapRes(context, "smssdk_btn_enable");
+		resid = ResHelper.getBitmapRes(context, "smssdk_btn_enable");
 		inviteBtn.setBackgroundResource(resid);
-		resid = R.getStringRes(context, "smssdk_send_invitation");
+		resid = ResHelper.getStringRes(context, "smssdk_send_invitation");
 		inviteBtn.setText(resid);
 		inviteBtn.setTextColor(0xffffffff);
 		inviteBtn.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(28));

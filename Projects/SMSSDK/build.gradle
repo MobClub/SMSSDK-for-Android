@@ -6,10 +6,11 @@ android {
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode rootProject.ext.sdkVersion
         versionName rootProject.ext.sdkVersionName
     }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -25,7 +26,11 @@ android {
         }
     }
     lintOptions {
-        disable 'InconsistentArrays','OldTargetApi','GradleOverrides','MissingTranslation','UnusedResources','GoogleAppIndexingWarning'
+        disable 'InconsistentArrays', 'OldTargetApi', 'GradleOverrides', 'MissingTranslation', 'UnusedResources', 'GoogleAppIndexingWarning'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
     }
 }
 

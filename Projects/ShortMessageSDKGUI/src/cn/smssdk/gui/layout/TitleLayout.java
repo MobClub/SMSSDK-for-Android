@@ -7,7 +7,7 @@
  */
 package cn.smssdk.gui.layout;
 
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -78,7 +78,7 @@ public class TitleLayout {
 				arrowParams.rightMargin = SizeHelper.fromPx(14);
 				ImageView backArrow = new ImageView(context);
 				backArrow.setLayoutParams(arrowParams);
-				int res = R.getBitmapRes(context, "smssdk_back_arrow");
+				int res = ResHelper.getBitmapRes(context, "smssdk_back_arrow");
 				backArrow.setBackgroundResource(res);
 
 				LinearLayout.LayoutParams logoParams = new LinearLayout.LayoutParams(SizeHelper.fromPx(30),SizeHelper.fromPx(44));
@@ -86,7 +86,7 @@ public class TitleLayout {
 				logoParams.rightMargin = SizeHelper.fromPx(14);
 				ImageView backLogo = new ImageView(context);
 				backLogo.setLayoutParams(logoParams);
-				res = R.getBitmapRes(context, "smssdk_sharesdk_icon");
+				res = ResHelper.getBitmapRes(context, "smssdk_sharesdk_icon");
 				backLogo.setBackgroundResource(res);
 
 				backLayout.addView(backArrow);
@@ -126,7 +126,7 @@ public class TitleLayout {
 		arrowParams.rightMargin = SizeHelper.fromPxWidth(14);
 		ImageView backArrow = new ImageView(context);
 		backArrow.setLayoutParams(arrowParams);
-		int res = R.getBitmapRes(context, "smssdk_back_arrow");
+		int res = ResHelper.getBitmapRes(context, "smssdk_back_arrow");
 		backArrow.setBackgroundResource(res);
 
 		LinearLayout.LayoutParams logoParams = new LinearLayout.LayoutParams(SizeHelper.fromPx(30),SizeHelper.fromPx(44));
@@ -134,7 +134,7 @@ public class TitleLayout {
 		logoParams.rightMargin = SizeHelper.fromPx(14);
 		ImageView backLogo = new ImageView(context);
 		backLogo.setLayoutParams(logoParams);
-		res = R.getBitmapRes(context, "smssdk_sharesdk_icon");
+		res = ResHelper.getBitmapRes(context, "smssdk_sharesdk_icon");
 		backLogo.setBackgroundResource(res);
 
 		backLayout.addView(backArrow);
@@ -153,7 +153,7 @@ public class TitleLayout {
 		TextView title = new TextView(context);
 		title.setLayoutParams(titleParams);
 		title.setId(Res.id.tv_title);
-		res = R.getStringRes(context, "smssdk_choose_country");
+		res = ResHelper.getStringRes(context, "smssdk_choose_country");
 		title.setText(res);
 		title.setTextColor(0xffcfcfcf);
 		title.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPx(32));
@@ -164,7 +164,7 @@ public class TitleLayout {
 		ImageView searchImage = new ImageView(context);
 		searchImage.setLayoutParams(searchImageParams);
 		searchImage.setId(Res.id.ivSearch);
-		res = R.getBitmapRes(context, "smssdk_search_icon");
+		res = ResHelper.getBitmapRes(context, "smssdk_search_icon");
 		searchImage.setImageResource(res);
 		searchImage.setScaleType(ScaleType.CENTER_INSIDE);
 		searchImage.setPadding(SizeHelper.fromPx(15), 0, SizeHelper.fromPx(15), 0);
@@ -176,7 +176,7 @@ public class TitleLayout {
 		LinearLayout innerSearchLayout = new LinearLayout(context);
 		innerSearchLayout.setLayoutParams(innerSearchParams);
 		innerSearchLayout.setId(Res.id.llSearch);
-		res = R.getBitmapRes(context, "smssdk_input_bg_focus");
+		res = ResHelper.getBitmapRes(context, "smssdk_input_bg_focus");
 		innerSearchLayout.setBackgroundResource(res);
 		innerSearchLayout.setPadding(SizeHelper.fromPx(14), 0, SizeHelper.fromPx(14), 0);
 		innerSearchLayout.setVisibility(View.GONE);
@@ -187,7 +187,7 @@ public class TitleLayout {
 		searchIconParams.rightMargin = SizeHelper.fromPx(8);
 		ImageView searchIcon = new ImageView(context);
 		searchIcon.setLayoutParams(searchIconParams);
-		res = R.getBitmapRes(context, "smssdk_search_icon");
+		res = ResHelper.getBitmapRes(context, "smssdk_search_icon");
 		searchIcon.setImageResource(res);
 		searchIcon.setScaleType(ScaleType.CENTER_INSIDE);
 		innerSearchLayout.addView(searchIcon);
@@ -197,7 +197,7 @@ public class TitleLayout {
 		EditText identify = new EditText(context);
 		identify.setLayoutParams(identifyParams);
 		identify.setId(Res.id.et_put_identify);
-		res = R.getStringRes(context, "smssdk_search");
+		res = ResHelper.getStringRes(context, "smssdk_search");
 		identify.setHint(res);
 		identify.setTextColor(0xffffffff);
 		identify.setBackgroundDrawable(null);
@@ -210,7 +210,7 @@ public class TitleLayout {
 		ImageView clear = new ImageView(context);
 		clear.setLayoutParams(clearParams);
 		clear.setId(Res.id.iv_clear);
-		res = R.getBitmapRes(context, "smssdk_clear_search");
+		res = ResHelper.getBitmapRes(context, "smssdk_clear_search");
 		clear.setImageResource(res);
 		clear.setScaleType(ScaleType.FIT_CENTER);
 		innerSearchLayout.addView(clear);

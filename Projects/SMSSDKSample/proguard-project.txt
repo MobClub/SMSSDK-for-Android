@@ -5,7 +5,7 @@
 -verbose
 -dontwarn
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
--keepattributes InnerClasses,LineNumberTable
+-keepattributes SourceFile,LineNumberTable,Exceptions,InnerClasses,EnclosingMethod,Signature,*Annotation*
 
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
@@ -43,8 +43,8 @@
     public static ** valueOf(java.lang.String);
 }
 
--keep class **.R$* {   
-    *;   
+-keep class **.R$* {
+    *;
 }
 
 -keep class * implements android.os.Parcelable {

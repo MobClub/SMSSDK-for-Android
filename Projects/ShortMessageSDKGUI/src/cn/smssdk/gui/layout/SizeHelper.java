@@ -8,7 +8,7 @@
 package cn.smssdk.gui.layout;
 
 import android.content.Context;
-import com.mob.tools.utils.R;
+import com.mob.tools.utils.ResHelper;
 
 
 public class SizeHelper {
@@ -32,7 +32,7 @@ public class SizeHelper {
 	 * @return 像素大小
 	 */
 	public static int fromPx(int px) {
-		return R.designToDevice(context, designedDensity, px);
+		return ResHelper.designToDevice(context, designedDensity, px);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class SizeHelper {
 	* @return 像素大小
 	*/
 	public static int fromPxWidth(int px) {
-		return R.designToDevice(context, designedScreenWidth, px);
+		return ResHelper.designToDevice(context, designedScreenWidth, px);
 	}
 
 	/**
@@ -48,8 +48,8 @@ public class SizeHelper {
 	* @return 像素大小
 	*/
 	public static int fromDp(int dp) {
-		int px = R.dipToPx(context, dp);
-		return R.designToDevice(context, designedDensity, px);
+		int px = ResHelper.dipToPx(context, dp);
+		return ResHelper.designToDevice(context, designedDensity, px);
 	}
 
 }
