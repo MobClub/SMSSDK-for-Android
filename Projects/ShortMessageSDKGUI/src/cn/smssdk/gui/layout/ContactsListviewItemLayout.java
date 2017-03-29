@@ -1,7 +1,8 @@
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
+ * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
  *
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
@@ -27,8 +28,9 @@ public class ContactsListviewItemLayout {
 		SizeHelper.prepare(context);
 
 		RelativeLayout root = new RelativeLayout(context);
-		root.setId(Res.id.rl_lv_item_bg);
-		AbsListView.LayoutParams params = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, SizeHelper.fromPxWidth(95));
+		root.setId(ResHelper.getIdRes(context, "rl_lv_item_bg"));
+		AbsListView.LayoutParams params = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,
+				SizeHelper.fromPxWidth(95));
 		root.setLayoutParams(params);
 		int padding = SizeHelper.fromPxWidth(14);
 		root.setPadding(padding, padding, padding, padding);
@@ -36,16 +38,18 @@ public class ContactsListviewItemLayout {
 		root.setBackgroundColor(0xffffffff);
 
 		AsyncImageView contactImage = new AsyncImageView(context);
-		contactImage.setId(Res.id.iv_contact);
-		RelativeLayout.LayoutParams contactImageParams = new RelativeLayout.LayoutParams(SizeHelper.fromPxWidth(64),SizeHelper.fromPxWidth(64));
+		contactImage.setId(ResHelper.getIdRes(context, "iv_contact"));
+		RelativeLayout.LayoutParams contactImageParams = new RelativeLayout.LayoutParams(SizeHelper.fromPxWidth(64),
+				SizeHelper.fromPxWidth(64));
 		contactImageParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		contactImage.setLayoutParams(contactImageParams);
 		contactImage.setScaleType(ScaleType.FIT_CENTER);
 		root.addView(contactImage);
 
 		LinearLayout wrapper = new LinearLayout(context);
-		RelativeLayout.LayoutParams wrapperParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-		wrapperParams.addRule(RelativeLayout.RIGHT_OF, Res.id.iv_contact);
+		RelativeLayout.LayoutParams wrapperParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
+		wrapperParams.addRule(RelativeLayout.RIGHT_OF, ResHelper.getIdRes(context, "iv_contact"));
 		wrapperParams.addRule(RelativeLayout.CENTER_VERTICAL);
 		wrapperParams.leftMargin = SizeHelper.fromPxWidth(12);
 		wrapper.setLayoutParams(wrapperParams);
@@ -53,24 +57,27 @@ public class ContactsListviewItemLayout {
 		root.addView(wrapper);
 
 		TextView name = new TextView(context);
-		name.setId(Res.id.tv_name);
-		LinearLayout.LayoutParams nameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+		name.setId(ResHelper.getIdRes(context, "tv_name"));
+		LinearLayout.LayoutParams nameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
 		name.setLayoutParams(nameParams);
 		name.setTextColor(0xff333333);
 		name.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(28));
 		wrapper.addView(name);
 
 		TextView contact = new TextView(context);
-		contact.setId(Res.id.tv_contact);
-		LinearLayout.LayoutParams contactParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+		contact.setId(ResHelper.getIdRes(context, "tv_contact"));
+		LinearLayout.LayoutParams contactParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
 		contact.setLayoutParams(contactParams);
 		contact.setTextColor(0xff999999);
 		contact.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(22));
 		wrapper.addView(contact);
 
 		Button add = new Button(context);
-		add.setId(Res.id.btn_add);
-		RelativeLayout.LayoutParams addParams = new RelativeLayout.LayoutParams(SizeHelper.fromPxWidth(92),SizeHelper.fromPxWidth(46));
+		add.setId(ResHelper.getIdRes(context, "btn_add"));
+		RelativeLayout.LayoutParams addParams = new RelativeLayout.LayoutParams(SizeHelper.fromPxWidth(92),
+				SizeHelper.fromPxWidth(46));
 		addParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		addParams.addRule(RelativeLayout.CENTER_VERTICAL);
 		add.setLayoutParams(addParams);

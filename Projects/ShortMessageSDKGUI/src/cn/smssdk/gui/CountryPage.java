@@ -1,16 +1,12 @@
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
+ * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
  *
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
 package cn.smssdk.gui;
-
-import static com.mob.tools.utils.R.getStringRes;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.app.Dialog;
 import android.text.Editable;
@@ -22,14 +18,19 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.mob.tools.FakeActivity;
+import com.mob.tools.utils.ResHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.GroupListView.OnItemClickListener;
 import cn.smssdk.gui.layout.CountryListPageLayout;
-import cn.smssdk.gui.layout.Res;
 import cn.smssdk.utils.SMSLog;
 
-import com.mob.tools.FakeActivity;
 
 /** 国家列表界面*/
 public class CountryPage extends FakeActivity implements OnClickListener, TextWatcher, OnItemClickListener {
@@ -90,7 +91,7 @@ public class CountryPage extends FakeActivity implements OnClickListener, TextWa
 											onCountryListGot((ArrayList<HashMap<String,Object>>) data);
 										} else {
 											((Throwable) data).printStackTrace();
-											int resId = getStringRes(activity, "smssdk_network_error");
+											int resId = ResHelper.getStringRes(activity, "smssdk_network_error");
 											if (resId > 0) {
 												Toast.makeText(activity, resId, Toast.LENGTH_SHORT).show();
 
@@ -118,25 +119,24 @@ public class CountryPage extends FakeActivity implements OnClickListener, TextWa
 
 	@Override
 	public void onResume(){
-	  	super.onResume();
+		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
-	   	super.onPause();
+		super.onPause();
 	}
 
 	private void initPage() {
+		activity.findViewById(ResHelper.getIdRes(activity, "ll_back")).setOnClickListener(this);
+		activity.findViewById(ResHelper.getIdRes(activity, "ivSearch")).setOnClickListener(this);
+		activity.findViewById(ResHelper.getIdRes(activity, "iv_clear")).setOnClickListener(this);
 
-		activity.findViewById(Res.id.ll_back).setOnClickListener(this);
-		activity.findViewById(Res.id.ivSearch).setOnClickListener(this);
-		activity.findViewById(Res.id.iv_clear).setOnClickListener(this);
-
-		int resId = Res.id.clCountry;
+		int resId = ResHelper.getIdRes(activity, "clCountry");
 		listView = (CountryListView) activity.findViewById(resId);
 		listView.setOnItemClickListener(this);
 
-		resId = Res.id.et_put_identify;
+		resId = ResHelper.getIdRes(activity, "et_put_identify");
 		etSearch = (EditText) activity.findViewById(resId);
 		etSearch.addTextChangedListener(this);
 	}
@@ -166,7 +166,7 @@ public class CountryPage extends FakeActivity implements OnClickListener, TextWa
 				id = country[2];
 				finish();
 			} else {
-				int resId = getStringRes(activity, "smssdk_country_not_support_currently");
+				int resId = ResHelper.getStringRes(activity, "smssdk_country_not_support_currently");
 				if (resId > 0) {
 					Toast.makeText(activity, resId, Toast.LENGTH_SHORT).show();
 				}
@@ -176,32 +176,32 @@ public class CountryPage extends FakeActivity implements OnClickListener, TextWa
 
 	public void onClick(View v) {
 		int id = v.getId();
-		int id_ll_back = Res.id.ll_back;
-		int id_ivSearch = Res.id.ivSearch;
-		int id_iv_clear = Res.id.iv_clear;
-		if (id == id_ll_back) {
+		int idLlBack = ResHelper.getIdRes(activity, "ll_back");
+		int idIvSearch = ResHelper.getIdRes(activity, "ivSearch");
+		int idIvClear = ResHelper.getIdRes(activity, "iv_clear");
+		if (id == idLlBack) {
 			finish();
-		} else if (id == id_ivSearch) {
+		} else if (id == idIvSearch) {
 			// 搜索
-			int id_llTitle = Res.id.llTitle;
-			activity.findViewById(id_llTitle).setVisibility(View.GONE);
-			int id_llSearch = Res.id.llSearch;
-			activity.findViewById(id_llSearch).setVisibility(View.VISIBLE);
+			int idLlTitle = ResHelper.getIdRes(activity, "llTitle");
+			activity.findViewById(idLlTitle).setVisibility(View.GONE);
+			int idLlSearch = ResHelper.getIdRes(activity, "llSearch");
+			activity.findViewById(idLlSearch).setVisibility(View.VISIBLE);
 			etSearch.getText().clear();
 			etSearch.requestFocus();
-		} else if (id == id_iv_clear) {
+		} else if (id == idIvClear) {
 			etSearch.getText().clear();
 		}
 	}
 
 	public boolean onKeyEvent(int keyCode, KeyEvent event) {
 		try {
-			int resId = Res.id.llSearch;
+			int resId = ResHelper.getIdRes(activity, "llSearch");
 			if (keyCode == KeyEvent.KEYCODE_BACK
 					&& event.getAction() == KeyEvent.ACTION_DOWN
 					&& activity.findViewById(resId).getVisibility() == View.VISIBLE) {
 				activity.findViewById(resId).setVisibility(View.GONE);
-				resId = Res.id.llTitle;
+				resId = ResHelper.getIdRes(activity, "llTitle");
 				activity.findViewById(resId).setVisibility(View.VISIBLE);
 				etSearch.setText("");
 				return true;

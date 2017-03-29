@@ -1,56 +1,56 @@
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
+ * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
  *
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
 package cn.smssdk.gui;
 
-import static com.mob.tools.utils.R.getBitmapRes;
-import static com.mob.tools.utils.R.getStringRes;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import cn.smssdk.gui.layout.ContactsListviewItemLayout;
-import cn.smssdk.gui.layout.Res;
 
 import com.mob.tools.gui.AsyncImageView;
 import com.mob.tools.gui.BitmapProcessor;
+import com.mob.tools.utils.ResHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import cn.smssdk.gui.layout.ContactsListviewItemLayout;
+import cn.smssdk.utils.SMSLog;
+
 
 public class DefaultContactViewItem implements cn.smssdk.gui.ContactItemMaker {
 
-	@Override
 	public View getView(final HashMap<String, Object> user, View convertView, final ViewGroup parent) {
-
 		ViewHolder viewHolder;
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
 
-			convertView = ContactsListviewItemLayout.create(parent.getContext());
+			Context context = parent.getContext();
+			convertView = ContactsListviewItemLayout.create(context);
 
-			int resId = Res.id.iv_contact;
+			int resId = ResHelper.getIdRes(context, "iv_contact");
 			viewHolder.ivContact = (AsyncImageView) convertView.findViewById(resId);
-			resId = Res.id.tv_name;
+			resId = ResHelper.getIdRes(context, "tv_name");
 			viewHolder.tvName = (TextView) convertView.findViewById(resId);
-			resId = Res.id.tv_contact;
+			resId = ResHelper.getIdRes(context, "tv_contact");
 			viewHolder.tvContact = (TextView) convertView.findViewById(resId);
-			resId = Res.id.btn_add;
+			resId = ResHelper.getIdRes(context, "btn_add");
 			viewHolder.btnAdd = (Button) convertView.findViewById(resId);
-			resId = Res.id.rl_lv_item_bg;
+			resId = ResHelper.getIdRes(context, "rl_lv_item_bg");
 			viewHolder.bg = convertView.findViewById(resId);
 			convertView.setTag(viewHolder);
-		}else{
+		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
@@ -65,7 +65,7 @@ public class DefaultContactViewItem implements cn.smssdk.gui.ContactItemMaker {
 				} else {
 					viewHolder.tvContact.setText(dspName);
 				}
-				int resId = getStringRes(parent.getContext(), "smssdk_add_contact");
+				int resId = ResHelper.getStringRes(parent.getContext(), "smssdk_add_contact");
 				if (resId > 0) {
 					viewHolder.btnAdd.setText(resId);
 				}
@@ -83,7 +83,7 @@ public class DefaultContactViewItem implements cn.smssdk.gui.ContactItemMaker {
 					viewHolder.tvName.setText(dspName);
 				}
 				viewHolder.tvContact.setVisibility(View.GONE);
-				int resId = getStringRes(parent.getContext(), "smssdk_invite");
+				int resId = ResHelper.getStringRes(parent.getContext(), "smssdk_invite");
 				if (resId > 0) {
 					viewHolder.btnAdd.setText(resId);
 				}
@@ -98,14 +98,14 @@ public class DefaultContactViewItem implements cn.smssdk.gui.ContactItemMaker {
 				}
 			}
 
-			String iconUrl = user.containsKey("avatar")? (String) user.get("avatar") : null;
+			String iconUrl = user.containsKey("avatar") ? (String) user.get("avatar") : null;
 			// 设置默认头像，如果有url，就去下载
-			int resId = getBitmapRes(parent.getContext(), "smssdk_cp_default_avatar");
+			int resId = ResHelper.getBitmapRes(parent.getContext(), "smssdk_cp_default_avatar");
 			if (resId > 0) {
 				viewHolder.ivContact.execute(null, resId);
 			}
 			if(!TextUtils.isEmpty(iconUrl)){
-				Log.w(String.valueOf(user.get("displayname")) + " icon url ==>> ", iconUrl);
+				SMSLog.getInstance().i(String.valueOf(user.get("displayname")) + " icon url ==>> " + iconUrl);
 				Bitmap bm = BitmapProcessor.getBitmapFromCache(iconUrl);
 				if (bm != null && !bm.isRecycled()) {
 					viewHolder.ivContact.setImageBitmap(bm);

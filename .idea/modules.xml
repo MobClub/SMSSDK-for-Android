@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Projects/SMSSDK/SMSSDK.iml" filepath="$PROJECT_DIR$/Projects/SMSSDK/SMSSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SMSSDK-for-Android.iml" filepath="$PROJECT_DIR$/SMSSDK-for-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projects/SMSSDKSample/SMSSDKSample.iml" filepath="$PROJECT_DIR$/Projects/SMSSDKSample/SMSSDKSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Sample.iml" filepath="$PROJECT_DIR$/Sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projects/ShortMessageSDKGUI/ShortMessageSDKGUI.iml" filepath="$PROJECT_DIR$/Projects/ShortMessageSDKGUI/ShortMessageSDKGUI.iml" />
     </modules>
   </component>

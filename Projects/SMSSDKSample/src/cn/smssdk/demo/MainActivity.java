@@ -1,15 +1,12 @@
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
+ * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
  *
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
 package cn.smssdk.demo;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
 import android.Manifest;
 import android.app.Activity;
@@ -30,6 +27,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.CommonDialog;
@@ -40,10 +42,10 @@ import cn.smssdk.gui.RegisterPage;
 public class MainActivity extends Activity implements OnClickListener, Callback {
 	// 填写从短信SDK应用后台注册得到的APPKEY
 	//此APPKEY仅供测试使用，且不定期失效，请到mob.com后台申请正式APPKEY
-	private static String APPKEY = "f3fc6baa9ac4";
+	private static String appKey = "f3fc6baa9ac4";
 
 	// 填写从短信SDK应用后台注册得到的APPSECRET
-	private static String APPSECRET = "7f3dedcb36d92deebcb373af921d635a";
+	private static String appSecret = "7f3dedcb36d92deebcb373af921d635a";
 
 	// 短信注册，随机产生头像
 	private static final String[] AVATARS = {
@@ -113,24 +115,22 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 				return;
 			}
 		}
-
 		showAppkeyDialog();
-
 	}
 
 	private void showAppkeyDialog() {
 		final Dialog dialog = new Dialog(this, R.style.CommonDialog);
 		dialog.setContentView(R.layout.smssdk_set_appkey_dialog);
 		final EditText etAppKey = (EditText) dialog.findViewById(R.id.et_appkey);
-		etAppKey.setText(APPKEY);
+		etAppKey.setText(appKey);
 		final EditText etAppSecret = (EditText) dialog.findViewById(R.id.et_appsecret);
-		etAppSecret.setText(APPSECRET);
+		etAppSecret.setText(appSecret);
 		OnClickListener ocl = new OnClickListener() {
 			public void onClick(View v) {
 				if (v.getId() == R.id.btn_dialog_ok) {
-					APPKEY = etAppKey.getText().toString().trim();
-					APPSECRET = etAppSecret.getText().toString().trim();
-					if (TextUtils.isEmpty(APPKEY) || TextUtils.isEmpty(APPSECRET)) {
+					appKey = etAppKey.getText().toString().trim();
+					appSecret = etAppSecret.getText().toString().trim();
+					if (TextUtils.isEmpty(appKey) || TextUtils.isEmpty(appSecret)) {
 						Toast.makeText(v.getContext(), R.string.smssdk_appkey_dialog_title,
 								Toast.LENGTH_SHORT).show();
 					} else {
@@ -152,9 +152,9 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	private void initSDK() {
 		// 初始化短信SDK
-		SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
-		if (APPKEY.equalsIgnoreCase("f3fc6baa9ac4") ) {
-			Toast.makeText(this,"此APPKEY仅供测试使用，且不定期失效，请到mob.com后台申请正式APPKEY",Toast.LENGTH_SHORT).show();
+		SMSSDK.initSDK(this, appKey, appSecret, true);
+		if (appKey.equalsIgnoreCase("f3fc6baa9ac4") ) {
+			Toast.makeText(this, R.string.smssdk_dont_use_demo_appkey, Toast.LENGTH_SHORT).show();
 		}
 		final Handler handler = new Handler(this);
 		EventHandler eventHandler = new EventHandler() {
@@ -178,15 +178,15 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	private void loadSharePrefrence() {
 		SharedPreferences p = getSharedPreferences("SMSSDK_SAMPLE", Context.MODE_PRIVATE);
-		APPKEY = p.getString("APPKEY", APPKEY);
-		APPSECRET = p.getString("APPSECRET", APPSECRET);
+		appKey = p.getString("appKey", appKey);
+		appSecret = p.getString("appSecret", appSecret);
 	}
 
 	private void setSharePrefrence() {
 		SharedPreferences p = getSharedPreferences("SMSSDK_SAMPLE", Context.MODE_PRIVATE);
 		Editor edit = p.edit();
-		edit.putString("APPKEY", APPKEY);
-		edit.putString("APPSECRET", APPSECRET);
+		edit.putString("appKey", appKey);
+		edit.putString("appSecret", appSecret);
 		edit.commit();
 	}
 
@@ -215,10 +215,10 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_bind_phone:
-			// 打开注册页面
-			RegisterPage registerPage = new RegisterPage();
-			registerPage.setRegisterCallback(new EventHandler() {
+			case R.id.btn_bind_phone: {
+				// 打开注册页面
+				RegisterPage registerPage = new RegisterPage();
+				registerPage.setRegisterCallback(new EventHandler() {
 				public void afterEvent(int event, int result, Object data) {
 					// 解析注册结果
 					if (result == SMSSDK.RESULT_COMPLETE) {
@@ -230,15 +230,15 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 						registerUser(country, phone);
 					}
 				}
-			});
-			registerPage.show(this);
-			break;
-		case R.id.rl_contact:
-			tvNum.setVisibility(View.GONE);
-			// 打开通信录好友列表页面
-			ContactsPage contactsPage = new ContactsPage();
-			contactsPage.show(this);
-			break;
+				});
+				registerPage.show(this);
+			} break;
+			case R.id.rl_contact: {
+				tvNum.setVisibility(View.GONE);
+				// 打开通信录好友列表页面
+				ContactsPage contactsPage = new ContactsPage();
+				contactsPage.show(this);
+			} break;
 		}
 	}
 
@@ -278,7 +278,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		if(newFriendsCount > 0){
 			tvNum.setVisibility(View.VISIBLE);
 			tvNum.setText(String.valueOf(newFriendsCount));
-		}else{
+		} else {
 			tvNum.setVisibility(View.GONE);
 		}
 		if (pd != null && pd.isShowing()) {

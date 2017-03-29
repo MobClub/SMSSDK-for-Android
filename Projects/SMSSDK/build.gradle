@@ -2,21 +2,28 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion rootProject.ext.buildTool
 
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 22
         versionCode rootProject.ext.sdkVersion
         versionName rootProject.ext.sdkVersionName
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
     }
-
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = ['src']
             res.srcDirs = ['res']
             jniLibs.srcDirs = ['libs']
+        }
+        test.setRoot('test')
+        test {
+            java.srcDirs = ['test/java']
         }
     }
     buildTypes {
@@ -36,4 +43,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Local JUnit Testing dependencies.
+    testCompile fileTree(include: ['*.jar'], dir: 'testinglibs')
+    testCompile 'org.json:org.json:chargebee-1.0'
+    testCompile 'com.google.code.gson:gson:2.8.0'
+    testCompile 'org.w3c:dom:2.3.0-jaxb-1.0.6'
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--title-->
+    <item name="ll_back" type="id" />
+    <item name="tv_title" type="id" />
+    <item name="llTitle" type="id" />
+    <item name="ivSearch" type="id" />
+    <item name="llSearch" type="id" />
+    <item name="et_put_identify" type="id" />
+    <!--page-->
+    <item name="rl_country" type="id" />
+    <item name="tv_country" type="id" />
+    <item name="tv_country_num" type="id" />
+    <item name="et_write_phone" type="id" />
+    <item name="iv_clear" type="id" />
+    <item name="btn_next" type="id" />
+    <item name="iv_contact_icon" type="id" />
+    <item name="tv_contact_name" type="id" />
+    <item name="tv_contact_phones" type="id" />
+    <item name="tv_invite_hint" type="id" />
+    <item name="btn_invite" type="id" />
+    <item name="tv_identify_notify" type="id" />
+    <item name="tv_phone" type="id" />
+    <item name="btn_sounds" type="id" />
+    <item name="tv_unreceive_identify" type="id" />
+    <item name="btn_submit" type="id" />
+    <item name="clContact" type="id" />
+    <item name="clCountry" type="id" />
+    <!--dialog-->
+    <item name="btn_dialog_ok" type="id" />
+    <item name="btn_dialog_cancel" type="id" />
+    <item name="tv_dialog_title" type="id" />
+    <item name="tv_dialog_hint" type="id" />
+    <!--item-->
+    <item name="rl_lv_item_bg" type="id" />
+    <item name="iv_contact" type="id" />
+    <item name="tv_name" type="id" />
+    <item name="tv_contact" type="id" />
+    <item name="btn_add" type="id" />
+</resources>

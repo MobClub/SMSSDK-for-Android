@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion rootProject.ext.buildTool
 
     defaultConfig {
         applicationId "cn.smssdk.demo"

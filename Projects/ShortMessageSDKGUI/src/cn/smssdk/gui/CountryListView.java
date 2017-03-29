@@ -1,14 +1,13 @@
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
+ * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
  *
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
 package cn.smssdk.gui;
 
-import static com.mob.tools.utils.R.getBitmapRes;
-import static com.mob.tools.utils.R.getColorRes;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -21,8 +20,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.mob.tools.utils.ResHelper;
+
 import cn.smssdk.gui.GroupListView.OnItemClickListener;
 import cn.smssdk.gui.layout.SizeHelper;
+
 
 /** 自定义国家列表控件listview */
 public class CountryListView extends RelativeLayout implements OnTouchListener {
@@ -51,7 +54,7 @@ public class CountryListView extends RelativeLayout implements OnTouchListener {
 
 		lvContries = new GroupListView(context);
 		lvContries.setDividerHeight(SizeHelper.fromPxWidth(1));
-		int resId = getBitmapRes(context, "smssdk_cl_divider");
+		int resId = ResHelper.getBitmapRes(context, "smssdk_cl_divider");
 		if (resId > 0) {
 			lvContries.setDivider(context.getResources().getDrawable(resId));
 		}
@@ -59,16 +62,16 @@ public class CountryListView extends RelativeLayout implements OnTouchListener {
 		lvContries.setAdapter(adapter);
 		LayoutParams lpContries = new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		int dp_9 = SizeHelper.fromPxWidth(12);
-		lpContries.setMargins(dp_9, 0, dp_9, 0);
+		int dp9 = SizeHelper.fromPxWidth(12);
+		lpContries.setMargins(dp9, 0, dp9, 0);
 		addView(lvContries, lpContries);
 
 		tvScroll = new TextView(context);
-		resId = getColorRes(context, "smssdk_white");
+		resId = ResHelper.getColorRes(context, "smssdk_white");
 		if (resId > 0) {
 			tvScroll.setTextColor(context.getResources().getColor(resId));
 		}
-		resId = getBitmapRes(context, "smssdk_country_group_scroll_down");
+		resId = ResHelper.getBitmapRes(context, "smssdk_country_group_scroll_down");
 		if (resId > 0) {
 			tvScroll.setBackgroundResource(resId);
 		}
@@ -76,13 +79,13 @@ public class CountryListView extends RelativeLayout implements OnTouchListener {
 		tvScroll.setTypeface(Typeface.DEFAULT);
 		tvScroll.setVisibility(GONE);
 		tvScroll.setGravity(Gravity.CENTER);
-		int dp_80 = SizeHelper.fromPxWidth(120);
-		LayoutParams lp = new LayoutParams(dp_80, dp_80);
+		int dp80 = SizeHelper.fromPxWidth(120);
+		LayoutParams lp = new LayoutParams(dp80, dp80);
 		lp.addRule(CENTER_IN_PARENT);
 		addView(tvScroll, lp);
 
 		llScroll = new LinearLayout(context);
-		resId = getBitmapRes(context, "smssdk_country_group_scroll_up");
+		resId = ResHelper.getBitmapRes(context, "smssdk_country_group_scroll_up");
 		if (resId > 0) {
 			llScroll.setBackgroundResource(resId);
 		}
@@ -103,14 +106,14 @@ public class CountryListView extends RelativeLayout implements OnTouchListener {
 		SizeHelper.prepare(context);
 
 		int size = adapter.getGroupCount();
-		int dp_3 = SizeHelper.fromPxWidth(6);
-		int dp_2 = SizeHelper.fromPxWidth(4);
+		int dp3 = SizeHelper.fromPxWidth(6);
+		int dp2 = SizeHelper.fromPxWidth(4);
 		for (int i = 0; i < size; i++) {
 			TextView tv = new TextView(context);
 			tv.setText(adapter.getGroupTitle(i));
 			tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, SizeHelper.fromPxWidth(18));
 			tv.setGravity(Gravity.CENTER);
-			tv.setPadding(dp_3, dp_2, dp_3, dp_2);
+			tv.setPadding(dp3, dp2, dp3, dp2);
 			llScroll.addView(tv);
 		}
 	}
@@ -119,7 +122,7 @@ public class CountryListView extends RelativeLayout implements OnTouchListener {
 	public boolean onTouch(View v, MotionEvent event) {
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN: {
-				int resId = getBitmapRes(v.getContext(), "smssdk_country_group_scroll_down");
+				int resId = ResHelper.getBitmapRes(v.getContext(), "smssdk_country_group_scroll_down");
 				if (resId > 0) {
 					v.setBackgroundResource(resId);
 				}
@@ -127,24 +130,21 @@ public class CountryListView extends RelativeLayout implements OnTouchListener {
 				float y = event.getY();
 				ViewGroup vg = (ViewGroup) v;
 				onScroll(vg, x, y);
-			}
-			break;
+			} break;
 			case MotionEvent.ACTION_MOVE: {
 				float x = event.getX();
 				float y = event.getY();
 				ViewGroup vg = (ViewGroup) v;
 				onScroll(vg, x, y);
-			}
-			break;
+			} break;
 			case MotionEvent.ACTION_CANCEL:
 			case MotionEvent.ACTION_UP: {
-				int resId = getBitmapRes(v.getContext(), "smssdk_country_group_scroll_up");
+				int resId = ResHelper.getBitmapRes(v.getContext(), "smssdk_country_group_scroll_up");
 				if (resId > 0) {
 					v.setBackgroundResource(resId);
 				}
 				tvScroll.setVisibility(GONE);
-			}
-			break;
+			} break;
 		}
 		return true;
 	}

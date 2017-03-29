@@ -1,16 +1,12 @@
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
+ * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
  *
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
 package cn.smssdk.gui;
-
-import static com.mob.tools.utils.R.getStringRes;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -19,8 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
+
+import com.mob.tools.utils.ResHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import cn.smssdk.gui.ContactsListView.GroupAdapter;
 import cn.smssdk.gui.layout.SizeHelper;
+
 
 /**
  * 联系人列表adapter
@@ -117,7 +120,7 @@ public class ContactsAdapter extends GroupAdapter {
 		}
 
 		if (list.size() > 0) {
-			int resId = getStringRes(view.getContext(), "smssdk_contacts_in_app");
+			int resId = ResHelper.getStringRes(view.getContext(), "smssdk_contacts_in_app");
 			if (resId > 0) {
 				titles.add(view.getContext().getResources().getString(resId));
 			}
@@ -143,7 +146,7 @@ public class ContactsAdapter extends GroupAdapter {
 		}
 
 		if (list.size() > 0) {
-			int resId = getStringRes(view.getContext(), "smssdk_contacts_out_app");
+			int resId = ResHelper.getStringRes(view.getContext(), "smssdk_contacts_out_app");
 			if (resId > 0) {
 				titles.add(view.getContext().getResources().getString(resId));
 			}
