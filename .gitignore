@@ -6,4 +6,14 @@
 /build
 /captures
 *.iml
-/.idea
+
+#IDEA
+#/.idea/workspace.xml
+#/.idea/libraries
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# hprof file
+*.hprof
