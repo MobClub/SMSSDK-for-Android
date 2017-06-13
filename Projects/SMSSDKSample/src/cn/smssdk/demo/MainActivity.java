@@ -11,22 +11,19 @@ package cn.smssdk.demo;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mob.MobSDK;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,13 +37,6 @@ import cn.smssdk.gui.RegisterPage;
 
 //请注意：测试短信条数限制发送数量：20条/天，APP开发完成后请到mob.com后台提交审核，获得不限制条数的免费短信权限。
 public class MainActivity extends Activity implements OnClickListener, Callback {
-	// 填写从短信SDK应用后台注册得到的APPKEY
-	//此APPKEY仅供测试使用，且不定期失效，请到mob.com后台申请正式APPKEY
-	private static String appKey = "f3fc6baa9ac4";
-
-	// 填写从短信SDK应用后台注册得到的APPSECRET
-	private static String appSecret = "7f3dedcb36d92deebcb373af921d635a";
-
 	// 短信注册，随机产生头像
 	private static final String[] AVATARS = {
 		"http://tupian.qqjay.com/u/2011/0729/e755c434c91fed9f6f73152731788cb3.jpg",
@@ -79,7 +69,6 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		btnContact.setOnClickListener(this);
 		gettingFriends = false;
 
-		loadSharePrefrence();
 		if (Build.VERSION.SDK_INT >= 23) {
 			int readPhone = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
 			int receiveSms = checkSelfPermission(Manifest.permission.RECEIVE_SMS);
@@ -115,45 +104,17 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 				return;
 			}
 		}
-		showAppkeyDialog();
+		registerSDK();
 	}
 
-	private void showAppkeyDialog() {
-		final Dialog dialog = new Dialog(this, R.style.CommonDialog);
-		dialog.setContentView(R.layout.smssdk_set_appkey_dialog);
-		final EditText etAppKey = (EditText) dialog.findViewById(R.id.et_appkey);
-		etAppKey.setText(appKey);
-		final EditText etAppSecret = (EditText) dialog.findViewById(R.id.et_appsecret);
-		etAppSecret.setText(appSecret);
-		OnClickListener ocl = new OnClickListener() {
-			public void onClick(View v) {
-				if (v.getId() == R.id.btn_dialog_ok) {
-					appKey = etAppKey.getText().toString().trim();
-					appSecret = etAppSecret.getText().toString().trim();
-					if (TextUtils.isEmpty(appKey) || TextUtils.isEmpty(appSecret)) {
-						Toast.makeText(v.getContext(), R.string.smssdk_appkey_dialog_title,
-								Toast.LENGTH_SHORT).show();
-					} else {
-						dialog.dismiss();
-						setSharePrefrence();
-						initSDK();
-					}
-				} else {
-					dialog.dismiss();
-					finish();
-				}
-			}
-		};
-		dialog.findViewById(R.id.btn_dialog_ok).setOnClickListener(ocl);
-		dialog.findViewById(R.id.btn_dialog_cancel).setOnClickListener(ocl);
-		dialog.setCancelable(false);
-		dialog.show();
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		registerSDK();
 	}
 
-	private void initSDK() {
-		// 初始化短信SDK
-		SMSSDK.initSDK(this, appKey, appSecret, true);
-		if (appKey.equalsIgnoreCase("f3fc6baa9ac4") ) {
+	private void registerSDK() {
+		// 在尝试读取通信录时以弹窗提示用户（可选功能）
+		SMSSDK.setAskPermisionOnReadContact(true);
+		if ("moba6b6c6d6".equalsIgnoreCase(MobSDK.getAppkey())) {
 			Toast.makeText(this, R.string.smssdk_dont_use_demo_appkey, Toast.LENGTH_SHORT).show();
 		}
 		final Handler handler = new Handler(this);
@@ -174,20 +135,6 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		showDialog();
 		SMSSDK.getNewFriendsCount();
 		gettingFriends = true;
-	}
-
-	private void loadSharePrefrence() {
-		SharedPreferences p = getSharedPreferences("SMSSDK_SAMPLE", Context.MODE_PRIVATE);
-		appKey = p.getString("appKey", appKey);
-		appSecret = p.getString("appSecret", appSecret);
-	}
-
-	private void setSharePrefrence() {
-		SharedPreferences p = getSharedPreferences("SMSSDK_SAMPLE", Context.MODE_PRIVATE);
-		Editor edit = p.edit();
-		edit.putString("appKey", appKey);
-		edit.putString("appSecret", appSecret);
-		edit.commit();
 	}
 
 	protected void onDestroy() {
@@ -267,6 +214,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		}
 		return false;
 	}
+
 	// 更新，新好友个数
 	private void refreshViewCount(Object data){
 		int newFriendsCount = 0;
@@ -285,6 +233,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 			pd.dismiss();
 		}
 	}
+
 	// 弹出加载框
 	private void showDialog(){
 		if (pd != null && pd.isShowing()) {
@@ -293,6 +242,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		pd = CommonDialog.ProgressDialog(this);
 		pd.show();
 	}
+
 	// 提交用户信息
 	private void registerUser(String country, String phone) {
 		Random rnd = new Random();
@@ -301,9 +251,5 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		String nickName = "SmsSDK_User_" + uid;
 		String avatar = AVATARS[id % 12];
 		SMSSDK.submitUserInfo(uid, nickName, avatar, country, phone);
-	}
-
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-		showAppkeyDialog();
 	}
 }

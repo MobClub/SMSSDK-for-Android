@@ -12,6 +12,7 @@
 	<string name="smssdk_error_desc_408">无效的参数</string>
 	<string name="smssdk_error_desc_418">内部接口调用失败</string>
 	<string name="smssdk_error_desc_419">duid对应的token不存在</string>
+	<string name="smssdk_error_desc_420">duid不存在</string>
 	
 	<string name="smssdk_error_desc_450">权限不足</string>
 	<string name="smssdk_error_desc_451">User-Agent为空</string>
@@ -42,6 +43,9 @@
 	<string name="smssdk_error_desc_476">当前appkey发送短信的数量超过限额</string>
 	<string name="smssdk_error_desc_477">当前手机号发送短信的数量超过限额</string>
 	<string name="smssdk_error_desc_478">当前手机号在当前应用内发送超过限额</string>
+	<string name="smssdk_error_desc_481">验证接口调用错误</string>
+	<string name="smssdk_error_desc_482">传输中数据丢失</string>
+	<string name="smssdk_error_desc_483">AppSecret错误</string>
 	
 	<string name="smssdk_error_desc_500">服务器内部错误</string>
 	<string name="smssdk_error_desc_501">501 Not Implemented</string>
@@ -61,6 +65,12 @@
 	<string name="smssdk_error_desc_603">请填写正确的手机号码</string>
 	<string name="smssdk_error_desc_604">当前服务暂不支持此国家，请选择其它国家</string>
 	<string name="smssdk_error_desc_605">没有权限连接服务端</string>
+	<string name="smssdk_error_desc_606">无权访问该API</string>
+	<string name="smssdk_error_desc_607">Request header错误：Content-Length错误</string>
+	<string name="smssdk_error_desc_608">Request header错误：AppKey为空</string>
+	<string name="smssdk_error_desc_609">Request header错误：Sign为空</string>
+	<string name="smssdk_error_desc_610">Request header错误：UserAgent为空</string>
+	<string name="smssdk_error_desc_611">AppSecret为空</string>
 	
 	<string name="smssdk_error_detail_400">客户端请求不能被识别。</string>
 	<string name="smssdk_error_detail_401">请求的token为空。</string>
@@ -73,6 +83,7 @@
 	<string name="smssdk_error_detail_408">无效的请求参数。</string>
 	<string name="smssdk_error_detail_418">内部接口调用失败。</string>
 	<string name="smssdk_error_detail_419">appKey_token对应的duid不存在</string>
+	<string name="smssdk_error_detail_420">设备ID在服务端不存在</string>
 	
 	<string name="smssdk_error_detail_450">无权执行该操作。</string>
 	<string name="smssdk_error_detail_451">所有访问服务器的接口，在请求的头部必须加入指定格式的User-Agent。</string>
@@ -103,6 +114,9 @@
 	<string name="smssdk_error_detail_476">如果当前appkey对应的包名没有通过审核，每天次appkey+包名最多可以发送20条短信</string>
 	<string name="smssdk_error_detail_477">当前手机号码每天最多可发送短信10条，包括客户端发送和WebApi发送</string>
 	<string name="smssdk_error_detail_478">当前手机号码在当前应用下12小时内最多可发送文本验证码5条</string>
+	<string name="smssdk_error_detail_481">验证接口调用错误</string>
+	<string name="smssdk_error_detail_482">在网络传输中content-length不符合</string>
+	<string name="smssdk_error_detail_483">AppSecret错误，数据可能被篡改</string>
 	
 	<string name="smssdk_error_detail_500">服务端程序报错。</string>
 	<string name="smssdk_error_detail_501">501 Not Implemented</string>
@@ -122,5 +136,12 @@
 	<string name="smssdk_error_detail_603">请填写正确的手机号码</string>
 	<string name="smssdk_error_detail_604">当前服务暂不支持此国家，请选择其它国家</string>
 	<string name="smssdk_error_detail_605">没有权限连接服务端</string>
+	<string name="smssdk_error_detail_606">无权访问该API</string>
+	<string name="smssdk_error_detail_607">Request header错误：Content-Length错误</string>
+	<string name="smssdk_error_detail_608">Request header错误：AppKey为空</string>
+	<string name="smssdk_error_detail_609">Request header错误：Sign为空</string>
+	<string name="smssdk_error_detail_610">Request header错误：UserAgent为空</string>
+	<string name="smssdk_error_detail_611">AppSecret为空</string>
+
 	
 </resources>

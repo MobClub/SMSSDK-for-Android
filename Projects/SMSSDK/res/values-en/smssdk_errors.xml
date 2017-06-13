@@ -12,6 +12,7 @@
 	<string name="smssdk_error_desc_408">Invalid parameter</string>
 	<string name="smssdk_error_desc_418">Internal interface failure</string>
 	<string name="smssdk_error_desc_419">DUID not match</string>
+	<string name="smssdk_error_desc_420">duid does no exist</string>
 	
 	<string name="smssdk_error_desc_450">Permission denied</string>
 	<string name="smssdk_error_desc_451">User-Agent is empty</string>
@@ -42,6 +43,9 @@
 	<string name="smssdk_error_desc_476">the sending messages of this appkey exceeds the limit</string>
 	<string name="smssdk_error_desc_477">the sending messages of this phone exceeds the limit</string>
 	<string name="smssdk_error_desc_478">current phone exceeds the text message limit in this App</string>
+	<string name="smssdk_error_desc_481">validate API invoking wrong</string>
+	<string name="smssdk_error_desc_482">Content-Length wrong</string>
+	<string name="smssdk_error_desc_483">AppSecret wrong</string>
 	
 	<string name="smssdk_error_desc_500">Internal Server Error</string>
 	<string name="smssdk_error_desc_501">501 Not Implemented</string>
@@ -61,6 +65,12 @@
 	<string name="smssdk_error_desc_603">Please input the correct phone number</string>
 	<string name="smssdk_error_desc_604">Country not support, please choose another one</string>
 	<string name="smssdk_error_desc_605">No Permission to request the server</string>
+	<string name="smssdk_error_desc_606">No permission to access this API</string>
+	<string name="smssdk_error_desc_607">Request header invalid：Content-Length wrong</string>
+	<string name="smssdk_error_desc_608">Request header invalid：AppKey is empty</string>
+	<string name="smssdk_error_desc_609">Request header invalid：Sign is empty</string>
+	<string name="smssdk_error_desc_610">Request header invalid：UserAgent is empty</string>
+	<string name="smssdk_error_desc_611">AppSecret is empty</string>
 
 	<string name="smssdk_error_detail_400">The request could not be identified</string>
 	<string name="smssdk_error_detail_401">The request token is empty</string>
@@ -73,6 +83,7 @@
 	<string name="smssdk_error_detail_408">There are illegal arguments in the request</string>
 	<string name="smssdk_error_detail_418">An error occurred when calling internal interface</string>
 	<string name="smssdk_error_detail_419">DUID does not match the token</string>
+	<string name="smssdk_error_detail_420">Device ID does not exist in server</string>
 	
 	<string name="smssdk_error_detail_450">The application attempts to perform an action it does not have permission for</string>
 	<string name="smssdk_error_detail_451">The User-Agent header must be join in the spacified format</string>
@@ -103,7 +114,10 @@
 	<string name="smssdk_error_detail_476">the sending messages of this appkey exceeds the limit</string>
 	<string name="smssdk_error_detail_477">the sending messages of this phone exceeds the limit</string>
 	<string name="smssdk_error_detail_478">current phone can send 5 text messages per 12 hours in current app</string>
-	
+	<string name="smssdk_error_detail_481">validate API invoking wrong</string>
+	<string name="smssdk_error_detail_482">Content-Length of network request wrong</string>
+	<string name="smssdk_error_detail_483">AppSecret wrong, data may be modified</string>
+
 	<string name="smssdk_error_detail_500">Internal Server Error</string>
 	<string name="smssdk_error_detail_501">501 Not Implemented</string>
 	<string name="smssdk_error_detail_502">502 Bad Gateway</string>
@@ -122,4 +136,10 @@
 	<string name="smssdk_error_detail_603">Please input the correct phone number</string>
 	<string name="smssdk_error_detail_604">Country not support, please choose another one</string>
 	<string name="smssdk_error_detail_605">No Permission to request the server</string>
+	<string name="smssdk_error_detail_606">No permission to access this API</string>
+	<string name="smssdk_error_detail_607">Request header invalid：Content-Length wrong</string>
+	<string name="smssdk_error_detail_608">Request header invalid：AppKey is empty</string>
+	<string name="smssdk_error_detail_609">Request header invalid：Sign is empty</string>
+	<string name="smssdk_error_detail_610">Request header invalid：UserAgent is empty</string>
+	<string name="smssdk_error_detail_611">AppSecret is empty</string>
 </resources>
