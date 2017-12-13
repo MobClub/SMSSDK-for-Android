@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="smssdk_error_desc_server_busy">服务器繁忙</string>
+	<string name="smssdk_error_desc_206">模板无效</string>
 	<string name="smssdk_error_desc_400">无效请求</string>
 	<string name="smssdk_error_desc_401">token为空</string>
 	<string name="smssdk_error_desc_402">token不存在</string>
@@ -84,7 +85,8 @@
 	<string name="smssdk_error_detail_418">内部接口调用失败。</string>
 	<string name="smssdk_error_detail_419">appKey_token对应的duid不存在</string>
 	<string name="smssdk_error_detail_420">设备ID在服务端不存在</string>
-	
+
+	<string name="smssdk_error_detail_206">模板不存在/未审核/非SDK模板</string>
 	<string name="smssdk_error_detail_450">无权执行该操作。</string>
 	<string name="smssdk_error_detail_451">所有访问服务器的接口，在请求的头部必须加入指定格式的User-Agent。</string>
 	<string name="smssdk_error_detail_452">请求头中的User-Agent格式错误。</string>
