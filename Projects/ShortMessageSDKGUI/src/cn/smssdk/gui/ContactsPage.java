@@ -1,11 +1,22 @@
+//#if def{lang} == cn
 /*
  * 官网地站:http://www.mob.com
  * 技术支持QQ: 4006852216
  * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，
  * 也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
- *
+ * 
  * Copyright (c) 2014年 mob.com. All rights reserved.
  */
+//#elif def{lang} == en
+/*
+ * Offical Website:http://www.mob.com
+ * Support QQ: 4006852216
+ * Offical Wechat Account:ShareSDK   (We will inform you our updated news at the first time by Wechat, if we release a new version.
+ * If you get any problem, you can also contact us with Wechat, we will reply you within 24 hours.)
+ * 
+ * Copyright (c) 2013 mob.com. All rights reserved.
+ */
+//#endif
 package cn.smssdk.gui;
 
 import android.app.Dialog;
@@ -33,29 +44,33 @@ import cn.smssdk.gui.layout.ContactListPageLayout;
 import cn.smssdk.utils.SMSLog;
 
 
+//#if def{lang} == cn
 /** 联系人列表页面*/
+//#elif def{lang} == en
+/** The page of contacts*/
+//#endif
 public class ContactsPage extends FakeActivity implements OnClickListener, TextWatcher{
-
+	
 	private EditText etSearch;
 	private ContactsListView listView;
 	private ContactsAdapter adapter;
 	private ContactItemMaker itemMaker;
-
+	
 	private Dialog pd;
 	private EventHandler handler;
 	private ArrayList<HashMap<String,Object>> friendsInApp;
-	private ArrayList<HashMap<String,Object>> contactsInMobile;
+	private ArrayList<HashMap<String,Object>> contactsInMobile; 	
 
 	@Override
 	public void onCreate() {
 		if (pd != null && pd.isShowing()) {
 			pd.dismiss();
 		}
-		pd = CommonDialog.ProgressDialog(activity);
+		pd = CommonDialog.ProgressDialog(activity);		
 		if (pd != null) {
 			pd.show();
 		}
-
+		
 		// 初始化搜索引擎
 		SearchEngine.prepare(activity, new Runnable() {
 			public void run() {
@@ -63,16 +78,16 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 			}
 		});
 	}
-
+	
 	private void afterPrepare() {
 		runOnUIThread(new Runnable() {
 			public void run() {
 				friendsInApp = new ArrayList<HashMap<String,Object>>();
 				contactsInMobile = new ArrayList<HashMap<String,Object>>();
-
+				
 				ContactListPageLayout page = new ContactListPageLayout(activity);
 				LinearLayout layout = page.getLayout();
-
+				
 				if (layout != null) {
 					activity.setContentView(layout);
 					initView();
@@ -91,19 +106,19 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 	public void onPause() {
 		super.onPause();
 	}
-
+	
 	public void show(Context context) {
 		show(context, new DefaultContactViewItem());
 	}
-
+	
 	public void show(Context context, ContactItemMaker maker) {
 		itemMaker = maker;
 		super.show(context, null);
 	}
-
+	
 	private void initView(){
 		listView = (ContactsListView) activity.findViewById(ResHelper.getIdRes(activity, "clContact"));
-
+	
 		activity.findViewById(ResHelper.getIdRes(activity, "ll_back")).setOnClickListener(this);
 		activity.findViewById(ResHelper.getIdRes(activity, "ivSearch")).setOnClickListener(this);
 		activity.findViewById(ResHelper.getIdRes(activity, "iv_clear")).setOnClickListener(this);
@@ -117,23 +132,31 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 		etSearch = (EditText) activity.findViewById(ResHelper.getIdRes(activity, "et_put_identify"));
 		etSearch.addTextChangedListener(this);
 	}
-
+	
 	private void initData(){
 		handler = new EventHandler() {
 			@SuppressWarnings("unchecked")
 			public void afterEvent(final int event, final int result, final Object data) {
 				if (result == SMSSDK.RESULT_COMPLETE) {
 					if (event == SMSSDK.EVENT_GET_CONTACTS) {
+						//#if def{lang} == cn
 						// 请求获取本地联系人列表
+						//#elif def{lang} == en
+						// Getting a list of contacts from phone
+						//#endif
 						ArrayList<HashMap<String,Object>> rawList = (ArrayList<HashMap<String,Object>>) data;
 						if (rawList == null) {
 							contactsInMobile = new ArrayList<HashMap<String,Object>>();
 						} else {
-							contactsInMobile = (ArrayList<HashMap<String,Object>>) rawList.clone();
+							contactsInMobile = (ArrayList<HashMap<String,Object>>) rawList.clone(); 
 						}
 						refreshContactList();
 					} else if (event == SMSSDK.EVENT_GET_FRIENDS_IN_APP) {
+						//#if def{lang} == cn
 						// 请求获取服务器上，应用内的朋友
+						//#elif def{lang} == en
+						// Getting a list of app's user from server
+						//#endif
 						friendsInApp = (ArrayList<HashMap<String,Object>>) data;
 						SMSSDK.getContacts(false);
 					}
@@ -142,8 +165,12 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 						public void run() {
 							if (pd != null && pd.isShowing()) {
 								pd.dismiss();
-							}
+							}	
+							//#if def{lang} == cn
 							// 网络错误
+							//#elif def{lang} == en
+							// network error
+							//#endif
 							int resId = ResHelper.getStringRes(activity, "smssdk_network_error");
 							if (resId > 0) {
 								Toast.makeText(activity, resId, Toast.LENGTH_SHORT).show();
@@ -153,18 +180,30 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 				}
 			}
 		};
+		//#if def{lang} == cn
 		// 注册事件监听器
+		//#elif def{lang} == en
+		// register event listener
+		//#endif
 		SMSSDK.registerEventHandler(handler);
-
+		
 		if(friendsInApp != null && friendsInApp.size() > 0) {
+			//#if def{lang} == cn
 			// 获取本地联系人
+			//#elif def{lang} == en
+			// Getting a list of contacts from phone
+			//#endif
 			SMSSDK.getContacts(false);
 		} else {
+			//#if def{lang} == cn
 			// 获取应用内的好友列表
-			SMSSDK.getFriendsInApp();
+			//#elif def{lang} == en
+			// Getting a list of app's user from server
+			//#endif
+			SMSSDK.getFriendsInApp();			
 		}
 	}
-
+	
 	public boolean onKeyEvent(int keyCode, KeyEvent event) {
 		try {
 			int resId = ResHelper.getIdRes(activity, "llSearch");
@@ -182,36 +221,40 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 		}
 		return super.onKeyEvent(keyCode, event);
 	}
-
+	
 	public void onDestroy() {
+		//#if def{lang} == cn
 		// 销毁事件监听器
+		//#elif def{lang} == en
+		// Unregister event listener
+		//#endif
 		SMSSDK.unregisterEventHandler(handler);
 	}
-
+	
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		if (adapter != null) {
 			adapter.search(s.toString());
 			adapter.notifyDataSetChanged();
 		}
 	}
-
+	
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+		
 	}
-
+	
 	@Override
 	public void afterTextChanged(Editable s) {
-
+		
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
 		int idLlBack = ResHelper.getIdRes(activity, "ll_back");
 		int idIvSearch = ResHelper.getIdRes(activity, "ivSearch");
 		int idIvClear = ResHelper.getIdRes(activity, "iv_clear");
-
+		
 		if (id == idLlBack) {
 			finish();
 		} else if (id == idIvSearch) {
@@ -226,13 +269,21 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 		}
 	}
 
+	//#if def{lang} == cn
 	// 获取联系人列表
+	//#elif def{lang} == en
+	// get contacts list
+	//#endif
 	@SuppressWarnings("unchecked")
 	private void refreshContactList() {
+		//#if def{lang} == cn
 		// 造一个“电话号码-联系人”映射表，加速查询
+		//#elif def{lang} == en
+		// Create a ContactEntry List of phone to contact
+		//#endif
 		ArrayList<ContactEntry> phone2Contact = new ArrayList<ContactEntry>();
 		for (HashMap<String, Object> contact : contactsInMobile) {
-			ArrayList<HashMap<String, Object>> phones
+			ArrayList<HashMap<String, Object>> phones 
 					= (ArrayList<HashMap<String, Object>>) contact.get("phones");
 			if (phones != null && phones.size() > 0) {
 				for (HashMap<String, Object> phone : phones) {
@@ -242,8 +293,12 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 				}
 			}
 		}
-
+		
+		//#if def{lang} == cn
 		// 组织应用内好友分组
+		//#elif def{lang} == en
+		// Divide into groups from phone2Contact
+		//#endif
 		ArrayList<HashMap<String,Object>> tmpFia = new ArrayList<HashMap<String,Object>>();
 		int p2cSize = phone2Contact.size();
 		for (HashMap<String, Object> friend : friendsInApp) {
@@ -261,8 +316,12 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 			}
 		}
 		friendsInApp = tmpFia;
-
+		
+		//#if def{lang} == cn
 		// 移除本地联系人列表中，包含已加入APP的联系人
+		//#elif def{lang} == en
+		// phone2Contact remove the contacts which have join in the app
+		//#endif
 		HashSet<HashMap<String, Object>> tmpCon = new HashSet<HashMap<String,Object>>();
 		for (ContactEntry ent : phone2Contact) {
 			String cp = ent.getKey();
@@ -283,14 +342,18 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 		}
 		contactsInMobile.clear();
 		contactsInMobile.addAll(tmpCon);
-
+		
+		//#if def{lang} == cn
 		// 删除非应用内好友分组联系人电话列表中已经注册了的电话号码
+		//#elif def{lang} == en
+		// delete the phone-number which have been registered from the friendsInApp data
+		//#endif
 		for (HashMap<String, Object> friend : friendsInApp) {
 			HashMap<String, Object> contact = (HashMap<String, Object>) friend.remove("contact");
 			if (contact != null) {
 				String phone = String.valueOf(friend.get("phone"));
 				if (phone != null) {
-					ArrayList<HashMap<String, Object>> phones
+					ArrayList<HashMap<String, Object>> phones 
 							= (ArrayList<HashMap<String, Object>>) contact.get("phones");
 					if (phones != null && phones.size() > 0) {
 						ArrayList<HashMap<String, Object>> tmpPs = new ArrayList<HashMap<String,Object>>();
@@ -303,35 +366,46 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 						contact.put("phones", tmpPs);
 					}
 				}
-
+				
+				//#if def{lang} == cn
 				// 添加本地联系人名称
+				//#elif def{lang} == en
+				// add name to the local contacts 
+				//#endif
 				friend.put("displayname", contact.get("displayname"));
 			}
 		}
-
+		
+		//#if def{lang} == cn
 		// 更新listview
+		//#elif def{lang} == en
+		// notify the listview
+		//#endif
 		runOnUIThread(new Runnable() {
 			public void run() {
 				if (pd != null && pd.isShowing()) {
 					pd.dismiss();
 				}
-
+				
 				adapter = new ContactsAdapter(listView, friendsInApp, contactsInMobile);
 				adapter.setContactItemMaker(itemMaker);
 				listView.setAdapter(adapter);
 			}
 		});
-
-
+		
+		
+		//#if def{lang} == cn
+		//#elif def{lang} == en
+		//#else
 //		if (pd != null && pd.isShowing()) {
 //			pd.dismiss();
 //		}
-//
+//		
 //		try {
-//
+//			
 //			// 造一个“电话号码-联系人”映射表，加速查询
 //			HashMap<String, HashMap<String, Object>> phone2Contact = new HashMap<String, HashMap<String,Object>>();
-//			for (HashMap<String, Object> contact : contactsInMobile) {
+//			for (HashMap<String, Object> contact : contactsInMobile) {	
 //				ArrayList<HashMap<String, Object>> phones = (ArrayList<HashMap<String, Object>>) contact.get("phones");
 //				if (phones != null && phones.size() > 0) {
 //					for (HashMap<String, Object> phone : phones) {
@@ -344,7 +418,7 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 //					}
 //				}
 //			}
-//
+//			
 //			// 移除本地联系人列表中，包含已加入APP的联系人
 //			ArrayList<HashMap<String, Object>> tmpList = new ArrayList<HashMap<String,Object>>();
 //			for (int i = 0; i < friendsInApp.size(); i++) {
@@ -365,17 +439,17 @@ public class ContactsPage extends FakeActivity implements OnClickListener, TextW
 //			//重新对号码进行过滤，排除重复的contact(一人多码)
 //			HashSet<HashMap<String, Object>> contactsSet = new HashSet<HashMap<String,Object>>(phone2Contact.values());
 //			contactsInMobile = new ArrayList<HashMap<String,Object>>(contactsSet);
-//
+//			
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-//
-//		//TODO 更新listview
+//		
 //		adapter = new ContactsAdapter(listView, friendsInApp, contactsInMobile);
 //		adapter.setContactItemMaker(itemMaker);
 //		//adapter.setOnItemClickListener(this);
 //		listView.setAdapter(adapter);
 
+		//#endif
 	}
-
+	
 }

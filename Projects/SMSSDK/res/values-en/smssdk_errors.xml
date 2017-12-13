@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="smssdk_error_desc_server_busy">Server is busy</string>
+	<string name="smssdk_error_desc_206">Template invalid</string>
 	<string name="smssdk_error_desc_400">Invalid request</string>
 	<string name="smssdk_error_desc_401">Token is empty</string>
 	<string name="smssdk_error_desc_402">Token does not exist</string>
@@ -72,6 +73,7 @@
 	<string name="smssdk_error_desc_610">Request header invalid：UserAgent is empty</string>
 	<string name="smssdk_error_desc_611">AppSecret is empty</string>
 
+	<string name="smssdk_error_detail_206">Template does not exist/not certificated/not SDK template</string>
 	<string name="smssdk_error_detail_400">The request could not be identified</string>
 	<string name="smssdk_error_detail_401">The request token is empty</string>
 	<string name="smssdk_error_detail_402">The request token does not exist</string>
