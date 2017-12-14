@@ -1,4 +1,2 @@
-include ':SMSSDK', ':ShortMessageSDKGUI', ":SMSSDKSample"
-project(':SMSSDK').projectDir = new File('Projects/SMSSDK')
-project(':ShortMessageSDKGUI').projectDir = new File('Projects/ShortMessageSDKGUI')
+include ':SMSSDKSample'
 project(':SMSSDKSample').projectDir = new File('Projects/SMSSDKSample')
