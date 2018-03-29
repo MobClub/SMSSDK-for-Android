@@ -20,6 +20,7 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,25 +35,11 @@ import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.CommonDialog;
 import cn.smssdk.gui.ContactsPage;
 import cn.smssdk.gui.RegisterPage;
+import cn.smssdk.gui.util.Const;
 
 //请注意：测试短信条数限制发送数量：20条/天，APP开发完成后请到mob.com后台提交审核，获得不限制条数的免费短信权限。
 public class MainActivity extends Activity implements OnClickListener, Callback {
-	// 短信注册，随机产生头像
-	private static final String[] AVATARS = {
-		"http://tupian.qqjay.com/u/2011/0729/e755c434c91fed9f6f73152731788cb3.jpg",
-		"http://99touxiang.com/public/upload/nvsheng/125/27-011820_433.jpg",
-		"http://img1.touxiang.cn/uploads/allimg/111029/2330264224-36.png",
-		"http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339485237265.jpg",
-		"http://diy.qqjay.com/u/files/2012/0523/f466c38e1c6c99ee2d6cd7746207a97a.jpg",
-		"http://img1.touxiang.cn/uploads/20121224/24-054837_708.jpg",
-		"http://img1.touxiang.cn/uploads/20121212/12-060125_658.jpg",
-		"http://img1.touxiang.cn/uploads/20130608/08-054059_703.jpg",
-		"http://diy.qqjay.com/u2/2013/0422/fadc08459b1ef5fc1ea6b5b8d22e44b4.jpg",
-		"http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339510584349.jpg",
-		"http://img1.touxiang.cn/uploads/20130515/15-080722_514.jpg",
-		"http://diy.qqjay.com/u2/2013/0401/4355c29b30d295b26da6f242a65bcaad.jpg"
-	};
-
+	public static final String TEMP_CODE = "1319972";
 	private boolean ready;
 	private boolean gettingFriends;
 	private Dialog pd;
@@ -60,9 +47,9 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_activity);
-		Button btnRegist = (Button) findViewById(R.id.btn_bind_phone);
-		View btnContact = findViewById(R.id.rl_contact);
+		setContentView(R.layout.smssdk_main_activity);
+		LinearLayout btnRegist = (LinearLayout) findViewById(R.id.ll_bind_phone);
+		View btnContact = findViewById(R.id.ll_contact);
 		tvNum = (TextView) findViewById(R.id.tv_num);
 		tvNum.setVisibility(View.GONE);
 		btnRegist.setOnClickListener(this);
@@ -162,9 +149,11 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.btn_bind_phone: {
+			case R.id.ll_bind_phone: {
 				// 打开注册页面
 				RegisterPage registerPage = new RegisterPage();
+				// 使用自定义短信模板(不设置则使用默认模板)
+				registerPage.setTempCode(TEMP_CODE);
 				registerPage.setRegisterCallback(new EventHandler() {
 				public void afterEvent(int event, int result, Object data) {
 					// 解析注册结果
@@ -174,13 +163,13 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 						String country = (String) phoneMap.get("country");
 						String phone = (String) phoneMap.get("phone");
 						// 提交用户信息
-						registerUser(country, phone);
+//						registerUser(country, phone);
 					}
 				}
 				});
 				registerPage.show(this);
 			} break;
-			case R.id.rl_contact: {
+			case R.id.ll_contact: {
 				tvNum.setVisibility(View.GONE);
 				// 打开通信录好友列表页面
 				ContactsPage contactsPage = new ContactsPage();
@@ -249,7 +238,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		int id = Math.abs(rnd.nextInt());
 		String uid = String.valueOf(id);
 		String nickName = "SmsSDK_User_" + uid;
-		String avatar = AVATARS[id % 12];
+		String avatar = Const.AVATOR_ARR[id % Const.AVATOR_ARR.length];
 		SMSSDK.submitUserInfo(uid, nickName, avatar, country, phone);
 	}
 }

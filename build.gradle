@@ -24,8 +24,8 @@ allprojects {
 }
 
 ext {
-    sdkVersion = 30100
-    sdkVersionName = '3.1.0'
+    sdkVersion = 30101
+    sdkVersionName = '3.1.1'
     buildTool = findBuildTools()
 }
 
