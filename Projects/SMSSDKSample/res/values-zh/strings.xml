@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SMSSDK</string>
+    <string name="smssdk_bind_mobile_show">手机号验证</string>
+    <string name="smssdk_contact">通讯录好友</string>
+    <string name="smssdk_appkey_dialog_title">请输入您的应用信息</string>
+    <string name="smssdk_appkey">AppKey</string>
+    <string name="smssdk_appkey_hint">请输入您的AppKey</string>
+    <string name="smssdk_appsecret">AppSecret</string>
+    <string name="smssdk_appsecrethint">请输入您的AppSecret</string>
+	<string name="smssdk_dont_use_demo_appkey">此APPKEY仅供测试使用，且不定期失效，请到mob.com后台申请正式APPKEY</string>
+</resources>

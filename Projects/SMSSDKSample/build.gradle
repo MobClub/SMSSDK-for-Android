@@ -9,9 +9,9 @@ android {
     defaultConfig {
         applicationId "cn.smssdk.demo"
         minSdkVersion 16
-        targetSdkVersion 22   //target SdkVersion >= 23 make miui crash
-        versionCode rootProject.ext.sdkVersion
-        versionName rootProject.ext.sdkVersionName
+        targetSdkVersion 22
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
     sourceSets {
         main {
@@ -33,6 +33,11 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
             signingConfig signingConfigs.release
         }

@@ -7,4 +7,5 @@
     <string name="smssdk_appkey_hint">Please input AppKey</string>
     <string name="smssdk_appsecret">AppSecret</string>
     <string name="smssdk_appsecrethint">Please input AppSecret</string>
+	<string name="smssdk_dont_use_demo_appkey">This APPKEY is only for test, please apply for a formal APPKEY from Mob Console</string>
 </resources>
