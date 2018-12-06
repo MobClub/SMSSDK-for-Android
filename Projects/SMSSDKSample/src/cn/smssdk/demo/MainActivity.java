@@ -59,7 +59,6 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		if (Build.VERSION.SDK_INT >= 23) {
 			int readPhone = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
 			int receiveSms = checkSelfPermission(Manifest.permission.RECEIVE_SMS);
-			int readSms = checkSelfPermission(Manifest.permission.READ_SMS);
 			int readContacts = checkSelfPermission(Manifest.permission.READ_CONTACTS);
 			int readSdcard = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
@@ -73,16 +72,12 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 				requestCode |= 1 << 1;
 				permissions.add(Manifest.permission.RECEIVE_SMS);
 			}
-			if (readSms != PackageManager.PERMISSION_GRANTED) {
-				requestCode |= 1 << 2;
-				permissions.add(Manifest.permission.READ_SMS);
-			}
 			if (readContacts != PackageManager.PERMISSION_GRANTED) {
-				requestCode |= 1 << 3;
+				requestCode |= 1 << 2;
 				permissions.add(Manifest.permission.READ_CONTACTS);
 			}
 			if (readSdcard != PackageManager.PERMISSION_GRANTED) {
-				requestCode |= 1 << 4;
+				requestCode |= 1 << 3;
 				permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
 			}
 			if (requestCode > 0) {
