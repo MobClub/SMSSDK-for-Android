@@ -3,6 +3,9 @@
 buildscript {
 	repositories {
 		jcenter()
+//        maven {
+//            url "http://10.18.97.47:8080/jenkins/job/iMaven/ws/android"
+//        }
 	}
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -20,8 +23,8 @@ allprojects {
 }
 
 ext {
-    versionCode = 30201
-    versionName = '3.2.1'
+    versionCode = 30300
+    versionName = '3.3.0'
     buildTool = findBuildTools()
 }
 
