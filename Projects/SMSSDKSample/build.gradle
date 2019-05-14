@@ -3,13 +3,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.mob.sdk'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 28
     buildToolsVersion rootProject.ext.buildTool
 
     defaultConfig {
         applicationId "cn.smssdk.demo"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 28
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
     }
@@ -57,11 +57,10 @@ MobSDK {
     appKey 'moba6b6c6d6'
     appSecret 'b89d2427a3bc7ad1aea1e1e8c1d36bf3'
 
-    permissions{
-        exclude "android.permission.READ_SMS"
+    SMSSDK {
+        // 若使用GUI的自动填充验证码功能，需打开此设置
+//        autoSMS true
     }
-
-    SMSSDK {}
 }
 
 dependencies {
