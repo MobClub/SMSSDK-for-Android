@@ -17,9 +17,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import cn.smssdk.EventHandler;
+import cn.smssdk.OnDialogListener;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.CommonDialog;
 import cn.smssdk.gui.ContactsPage;
@@ -63,7 +64,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 			int readSdcard = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
 			int requestCode = 0;
-			ArrayList<String> permissions = new ArrayList<String>();
+			final ArrayList<String> permissions = new ArrayList<String>();
 			if (readPhone != PackageManager.PERMISSION_GRANTED) {
 				requestCode |= 1 << 0;
 				permissions.add(Manifest.permission.READ_PHONE_STATE);
@@ -81,8 +82,30 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 				permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
 			}
 			if (requestCode > 0) {
-				String[] permission = new String[permissions.size()];
-				this.requestPermissions(permissions.toArray(permission), requestCode);
+				final String[] permission = new String[permissions.size()];
+				if (permissions.contains(Manifest.permission.READ_CONTACTS)) {
+					final int finalRequestCode = requestCode;
+					SMSSDK.showAuthorizeDialog(this, new OnDialogListener() {
+						@Override
+						public void onAgree(boolean doNotAskAgain) {
+							MainActivity.this.requestPermissions(permissions.toArray(permission), finalRequestCode);
+						}
+
+						@Override
+						public void onDisagree(boolean doNotAskAgain) {
+							MainActivity.this.requestPermissions(permissions.toArray(permission), finalRequestCode);
+						}
+
+						@Override
+						public void onNotShow() {
+							// Nothing to do
+							Log.d("MainActivity", "Do not show authorize dialog since user selection");
+							MainActivity.this.requestPermissions(permissions.toArray(permission), finalRequestCode);
+						}
+					});
+				} else {
+					this.requestPermissions(permissions.toArray(permission), requestCode);
+				}
 				return;
 			}
 		}
