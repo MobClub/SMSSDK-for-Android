@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="VerifyTextStyle">
+        <item name="android:textColor">@color/smssdk_tab_textcolor_selector</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/smssdk_text_bg_selector</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+	<style name="smsdemo_DialogStyle" parent="@android:style/Theme.Dialog">
+		<!-- 边框 -->
+		<item name="android:windowFrame">@null</item>
+		<!-- 是否浮现在activity之上 -->
+		<item name="android:windowIsFloating">true</item>
+		<!-- 半透明 -->
+		<item name="android:windowIsTranslucent">false</item>
+		<!-- 无标题 -->
+		<item name="android:windowNoTitle">true</item>
+		<!-- 自己想要的背景 -->
+		<item name="android:background">@android:color/transparent</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<!-- 模糊 -->
+		<item name="android:backgroundDimEnabled">true</item>
+	</style>
+</resources>
