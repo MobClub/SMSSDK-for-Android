@@ -8,4 +8,27 @@
     <string name="smssdk_appsecret">AppSecret</string>
     <string name="smssdk_appsecrethint">Please input AppSecret</string>
 	<string name="smssdk_dont_use_demo_appkey">This APPKEY is only for test, please apply for a formal APPKEY from Mob Console</string>
+	<string name="smsdemo_network_error">Network error, please retry later</string>
+    <!-- 新版-->
+    <string name="smssdk_start_verify">Verify</string>
+	<string name="smssdk_default_country">China</string>
+    <string name="smssdk_sms_verify">SMS Verify</string>
+    <string name="smssdk_audio_verify">Audio Verify</string>
+    <string name="smssdk_get_code">Get Code</string>
+    <string name="smssdk_verify">Verify</string>
+    <string name="smssdk_error_hint">Code error</string>
+    <string name="smssdk_busy_hint">Please wait</string>
+    <string name="smssdk_login_success">login success</string>
+    <string name="smssdk_login_failure">login failure</string>
+    <string name="smssdk_service_title">This service is provided by MobTech SDK</string>
+    <string name="smssdk_verify_again">Verify again</string>
+    <string name="smssdk_customer_service">Customer service phoneNo：400-685-2216</string>
+    <string name="smssdk_advise">Advise customer service</string>
+    <string name="smssdk_version">current version：v%1$s</string>
+
+	<!-- 隐私协议弹框 -->
+	<string name="smsdemo_authorize_dialog_title">Terms of Use</string>
+	<string name="smsdemo_authorize_dialog_content">Welcome to use demo provided by MobTech. Smssdk provides developers with a free SMS verification code service. The top channel is issued in 3 seconds, which is suitable for login, password retrieval, payment authentication and other scenarios. We will use MobTech\'s privacy policy to help you understand what data we collect. Please refer to our privacy policy for details</string>
+	<string name="smsdemo_authorize_dialog_reject">Reject</string>
+	<string name="smsdemo_authorize_dialog_accept">Accept</string>
 </resources>

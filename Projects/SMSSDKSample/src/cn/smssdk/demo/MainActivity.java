@@ -8,7 +8,6 @@
  */
 package cn.smssdk.demo;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.pm.PackageManager;
@@ -58,54 +57,32 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		gettingFriends = false;
 
 		if (Build.VERSION.SDK_INT >= 23) {
-			int readPhone = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
-			int receiveSms = checkSelfPermission(Manifest.permission.RECEIVE_SMS);
-			int readContacts = checkSelfPermission(Manifest.permission.READ_CONTACTS);
-			int readSdcard = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+			int readPhone = checkSelfPermission("android.permission.READ_PHONE_STATE");
+			int receiveSms = checkSelfPermission("android.permission.RECEIVE_SMS");
+			int readContacts = checkSelfPermission("android.permission.READ_CONTACTS");
+			int readSdcard = checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE");
 
 			int requestCode = 0;
 			final ArrayList<String> permissions = new ArrayList<String>();
 			if (readPhone != PackageManager.PERMISSION_GRANTED) {
 				requestCode |= 1 << 0;
-				permissions.add(Manifest.permission.READ_PHONE_STATE);
+				permissions.add("android.permission.READ_PHONE_STATE");
 			}
 			if (receiveSms != PackageManager.PERMISSION_GRANTED) {
 				requestCode |= 1 << 1;
-				permissions.add(Manifest.permission.RECEIVE_SMS);
+				permissions.add("android.permission.RECEIVE_SMS");
 			}
 			if (readContacts != PackageManager.PERMISSION_GRANTED) {
 				requestCode |= 1 << 2;
-				permissions.add(Manifest.permission.READ_CONTACTS);
+				permissions.add("android.permission.READ_CONTACTS");
 			}
 			if (readSdcard != PackageManager.PERMISSION_GRANTED) {
 				requestCode |= 1 << 3;
-				permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+				permissions.add("android.permission.READ_EXTERNAL_STORAGE");
 			}
 			if (requestCode > 0) {
-				final String[] permission = new String[permissions.size()];
-				if (permissions.contains(Manifest.permission.READ_CONTACTS)) {
-					final int finalRequestCode = requestCode;
-					SMSSDK.showAuthorizeDialog(this, new OnDialogListener() {
-						@Override
-						public void onAgree(boolean doNotAskAgain) {
-							MainActivity.this.requestPermissions(permissions.toArray(permission), finalRequestCode);
-						}
-
-						@Override
-						public void onDisagree(boolean doNotAskAgain) {
-							MainActivity.this.requestPermissions(permissions.toArray(permission), finalRequestCode);
-						}
-
-						@Override
-						public void onNotShow() {
-							// Nothing to do
-							Log.d("MainActivity", "Do not show authorize dialog since user selection");
-							MainActivity.this.requestPermissions(permissions.toArray(permission), finalRequestCode);
-						}
-					});
-				} else {
-					this.requestPermissions(permissions.toArray(permission), requestCode);
-				}
+				String[] permission = new String[permissions.size()];
+				this.requestPermissions(permissions.toArray(permission), requestCode);
 				return;
 			}
 		}
@@ -118,7 +95,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	private void registerSDK() {
 		// 在尝试读取通信录时以弹窗提示用户（可选功能）
-		SMSSDK.setAskPermisionOnReadContact(true);
+//		SMSSDK.setAskPermisionOnReadContact(true);
 		if ("moba6b6c6d6".equalsIgnoreCase(MobSDK.getAppkey())) {
 			Toast.makeText(this, R.string.smssdk_dont_use_demo_appkey, Toast.LENGTH_SHORT).show();
 		}

@@ -3,15 +3,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.mob.sdk'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion rootProject.ext.buildTool
 
     defaultConfig {
         applicationId "cn.smssdk.demo"
         minSdkVersion 16
-        targetSdkVersion 28
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
     }
     sourceSets {
         main {
@@ -64,5 +64,5 @@ MobSDK {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
