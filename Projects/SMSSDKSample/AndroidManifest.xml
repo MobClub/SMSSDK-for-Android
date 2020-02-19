@@ -32,15 +32,9 @@
 		<activity android:name=".ResultActivity"
 			android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection"
-            android:windowSoftInputMode="adjustPan|stateHidden" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+			android:name=".MainActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection"
+			android:windowSoftInputMode="adjustPan|stateHidden" />
         
     </application>
 

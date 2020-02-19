@@ -91,8 +91,7 @@ public class HomeActivity extends Activity {
 					Handler handler = new Handler(new Handler.Callback() {
 						@Override
 						public boolean handleMessage(Message msg) {
-							// TODO test
-//							System.exit(0);
+							System.exit(0);
 							return false;
 						}
 					});
