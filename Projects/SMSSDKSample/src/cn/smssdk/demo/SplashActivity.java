@@ -11,9 +11,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.mob.MobSDK;
-import com.mob.commons.dialog.entity.MobPolicyUi;
-
 import cn.smssdk.demo.privacy.PrivacyHolder;
 import cn.smssdk.demo.util.DemoSpHelper;
 
@@ -83,22 +80,5 @@ public class SplashActivity extends Activity implements View.OnTouchListener {
     		// 初始化MobTech隐私协议获取
 			PrivacyHolder.getInstance().init();
 		}
-		// 初始化隐私二次确认框相关自定义设置
-		initPrivacyRecheckSettings();
-	}
-
-	private void initPrivacyRecheckSettings() {
-    	MobSDK.setAllowDialog(true);
-    	// 自定义UI
-		MobPolicyUi mobPolicyUi = new MobPolicyUi.Builder()
-				// 设置弹框背景色资源ID
-//				.setBackgroundColorId(R.color.demo_common_white)
-				// 设置同意按钮背景色资源ID
-				.setPositiveBtnColorId(R.color.smssdk_green)
-				// 设置拒绝按钮背景色资源ID
-//				.setNegativeBtnColorId(R.color.demo_common_white)
-				.build();
-		// 需在使用SDK接口前调用，否则不生效
-		MobSDK.setPolicyUi(mobPolicyUi);
 	}
 }
