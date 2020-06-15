@@ -24,14 +24,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mob.MobSDK;
+import com.mob.OperationCallback;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 import cn.smssdk.EventHandler;
-import cn.smssdk.OnDialogListener;
 import cn.smssdk.SMSSDK;
+import cn.smssdk.demo.privacy.OnDialogListener;
+import cn.smssdk.demo.privacy.PrivacyDialog;
+import cn.smssdk.demo.util.DemoSpHelper;
 import cn.smssdk.gui.CommonDialog;
 import cn.smssdk.gui.ContactsPage;
 import cn.smssdk.gui.RegisterPage;
@@ -39,6 +42,7 @@ import cn.smssdk.gui.util.Const;
 
 //请注意：测试短信条数限制发送数量：20条/天，APP开发完成后请到mob.com后台提交审核，获得不限制条数的免费短信权限。
 public class MainActivity extends Activity implements OnClickListener, Callback {
+	private static final String TAG = "MainActivity";
 	public static final String TEMP_CODE = "1319972";
 	private boolean ready;
 	private boolean gettingFriends;
@@ -56,6 +60,40 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		btnContact.setOnClickListener(this);
 		gettingFriends = false;
 
+		if (!DemoSpHelper.getInstance().isPrivacyGranted()) {
+			PrivacyDialog privacyDialog = new PrivacyDialog(MainActivity.this, new OnDialogListener() {
+				@Override
+				public void onAgree() {
+					uploadResult(true);
+					DemoSpHelper.getInstance().setPrivacyGranted(true);
+					goOn();
+				}
+
+				@Override
+				public void onDisagree() {
+					uploadResult(false);
+					DemoSpHelper.getInstance().setPrivacyGranted(false);
+					Handler handler = new Handler(new Handler.Callback() {
+						@Override
+						public boolean handleMessage(Message msg) {
+							System.exit(0);
+							return false;
+						}
+					});
+					handler.sendEmptyMessageDelayed(0, 500);
+				}
+			});
+			privacyDialog.show();
+		} else {
+			goOn();
+		}
+	}
+
+	/**
+	 * 可以继续流程，一般是接受隐私条款后
+	 */
+	private void goOn() {
+		// 动态权限申请
 		if (Build.VERSION.SDK_INT >= 23) {
 			int readPhone = checkSelfPermission("android.permission.READ_PHONE_STATE");
 			int receiveSms = checkSelfPermission("android.permission.RECEIVE_SMS");
@@ -86,6 +124,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 				return;
 			}
 		}
+		// 初始化短信SDK
 		registerSDK();
 	}
 
@@ -95,7 +134,7 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 
 	private void registerSDK() {
 		// 在尝试读取通信录时以弹窗提示用户（可选功能）
-//		SMSSDK.setAskPermisionOnReadContact(true);
+		SMSSDK.setAskPermisionOnReadContact(true);
 		if ("moba6b6c6d6".equalsIgnoreCase(MobSDK.getAppkey())) {
 			Toast.makeText(this, R.string.smssdk_dont_use_demo_appkey, Toast.LENGTH_SHORT).show();
 		}
@@ -195,6 +234,12 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 			} else {
 				((Throwable) data).printStackTrace();
 			}
+		} else {
+			if (result == SMSSDK.RESULT_COMPLETE) {
+				Log.d(TAG, "result: " + data);
+			} else if (result == SMSSDK.RESULT_ERROR) {
+				Log.e(TAG, "Request error", (Throwable) data);
+			}
 		}
 		return false;
 	}
@@ -235,5 +280,20 @@ public class MainActivity extends Activity implements OnClickListener, Callback 
 		String nickName = "SmsSDK_User_" + uid;
 		String avatar = Const.AVATOR_ARR[id % Const.AVATOR_ARR.length];
 		SMSSDK.submitUserInfo(uid, nickName, avatar, country, phone);
+	}
+
+	private void uploadResult(boolean granted) {
+		MobSDK.submitPolicyGrantResult(granted, new OperationCallback<Void>() {
+			@Override
+			public void onComplete(Void aVoid) {
+				// Nothing to do
+			}
+
+			@Override
+			public void onFailure(Throwable throwable) {
+				// Nothing to do
+				Log.e(TAG, "Submit privacy grant result error", throwable);
+			}
+		});
 	}
 }
