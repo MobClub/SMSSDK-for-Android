@@ -12,6 +12,9 @@ buildscript {
         // 注册MobSDK
         classpath 'com.mob.sdk:MobSDK:+'
     }
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
 }
 
 allprojects {
@@ -22,6 +25,9 @@ allprojects {
 //            url 'http://10.18.97.56:8080/job/iMaven/ws/android'
 //        }
 	}
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
 }
 
 ext {
