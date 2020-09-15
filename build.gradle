@@ -17,13 +17,18 @@ buildscript {
     }
 }
 
+mavenUrl = "http://mvn.mob.com/android"
+if (hasProperty("mavenUrl")) {
+    mavenUrl = getProperty("mavenUrl")
+}
+
 allprojects {
 	repositories {
 		jcenter()
         google()
-//        maven {
-//            url 'http://10.18.97.56:8080/job/iMaven/ws/android'
-//        }
+        maven {
+            url mavenUrl
+        }
 	}
     configurations.all {
         resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
