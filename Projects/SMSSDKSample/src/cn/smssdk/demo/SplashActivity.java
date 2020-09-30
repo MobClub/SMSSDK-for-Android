@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import cn.smssdk.SMSSDK;
 import cn.smssdk.demo.privacy.PrivacyHolder;
 import cn.smssdk.demo.util.DemoSpHelper;
 
@@ -78,7 +79,8 @@ public class SplashActivity extends Activity implements View.OnTouchListener {
     private void init() {
     	if (!DemoSpHelper.getInstance().isPrivacyGranted()) {
     		// 初始化MobTech隐私协议获取
-			PrivacyHolder.getInstance().init();
+			//PrivacyHolder.getInstance().init();
 		}
+		SMSSDK.setAskPermisionOnReadContact(true);
 	}
 }

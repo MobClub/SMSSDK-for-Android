@@ -2,7 +2,9 @@ package cn.smssdk.demo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -19,7 +21,7 @@ import com.mob.MobSDK;
 import com.mob.OperationCallback;
 import com.mob.tools.utils.ResHelper;
 
-import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
 
 import cn.smssdk.SMSSDK;
 import cn.smssdk.demo.privacy.OnDialogListener;
@@ -76,12 +78,13 @@ public class HomeActivity extends Activity {
             }
         });
 
-        if (!DemoSpHelper.getInstance().isPrivacyGranted()) {
+		if (!DemoSpHelper.getInstance().isPrivacyGranted()) {
 			PrivacyDialog privacyDialog = new PrivacyDialog(HomeActivity.this, new OnDialogListener() {
 				@Override
 				public void onAgree() {
 					uploadResult(true);
 					DemoSpHelper.getInstance().setPrivacyGranted(true);
+					goOn();
 				}
 
 				@Override
@@ -99,8 +102,14 @@ public class HomeActivity extends Activity {
 				}
 			});
 			privacyDialog.show();
+		} else {
+			goOn();
 		}
     }
+
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+	}
 
 	private void uploadResult(boolean granted) {
 		MobSDK.submitPolicyGrantResult(granted, new OperationCallback<Void>() {
@@ -115,5 +124,42 @@ public class HomeActivity extends Activity {
 				Log.e(TAG, "Submit privacy grant result error", throwable);
 			}
 		});
+	}
+
+	/**
+	 * 可以继续流程，一般是接受隐私条款后
+	 */
+	private void goOn() {
+		// 动态权限申请
+		if (Build.VERSION.SDK_INT >= 23) {
+			int readPhone = checkSelfPermission("android.permission.READ_PHONE_STATE");
+			int receiveSms = checkSelfPermission("android.permission.RECEIVE_SMS");
+			int readContacts = checkSelfPermission("android.permission.READ_CONTACTS");
+			int readSdcard = checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE");
+
+			int requestCode = 0;
+			final ArrayList<String> permissions = new ArrayList<String>();
+			if (readPhone != PackageManager.PERMISSION_GRANTED) {
+				requestCode |= 1 << 0;
+				permissions.add("android.permission.READ_PHONE_STATE");
+			}
+			if (receiveSms != PackageManager.PERMISSION_GRANTED) {
+				requestCode |= 1 << 1;
+				permissions.add("android.permission.RECEIVE_SMS");
+			}
+			if (readContacts != PackageManager.PERMISSION_GRANTED) {
+				requestCode |= 1 << 2;
+				permissions.add("android.permission.READ_CONTACTS");
+			}
+			if (readSdcard != PackageManager.PERMISSION_GRANTED) {
+				requestCode |= 1 << 3;
+				permissions.add("android.permission.READ_EXTERNAL_STORAGE");
+			}
+			if (requestCode > 0) {
+				String[] permission = new String[permissions.size()];
+				this.requestPermissions(permissions.toArray(permission), requestCode);
+				return;
+			}
+		}
 	}
 }

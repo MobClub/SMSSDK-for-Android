@@ -12,16 +12,28 @@ buildscript {
         // 注册MobSDK
         classpath 'com.mob.sdk:MobSDK:+'
     }
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
 }
+
+String mavenUrl = "http://mvn.mob.com/android"
+if (hasProperty("mavenUrl")) {
+    mavenUrl = getProperty("mavenUrl")
+}
+println "mavenUrl: ${mavenUrl}, ${hasProperty("mavenUrl")}"
 
 allprojects {
 	repositories {
 		jcenter()
         google()
-//        maven {
-//            url 'http://10.18.97.56:8080/job/iMaven/ws/android'
-//        }
+        maven {
+            url mavenUrl
+        }
 	}
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
 }
 
 ext {
