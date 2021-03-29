@@ -51,6 +51,14 @@ android {
     }
 }
 
+try {
+    String tmpParams = getProperty("custom_params")
+    String[] params = tmpParams.split(",")
+    params.each {item->
+        MobSDK[item] = true
+    }
+} catch(Throwable t) {}
+
 // 在MobSDK的扩展中注册SMSSDK的相关信息
 MobSDK {
 //    domain 'jp'
