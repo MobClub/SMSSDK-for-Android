@@ -23,21 +23,7 @@ public class PrivacyHolder {
 		return instance;
 	}
 
-	public void init() {
-		MobSDK.getPrivacyPolicyAsync(MobSDK.POLICY_TYPE_URL, new PrivacyPolicy.OnPolicyListener() {
-			@Override
-			public void onComplete(PrivacyPolicy privacyPolicy) {
-				if (privacyPolicy != null) {
-					privacyUrl = privacyPolicy.getContent();
-				}
-			}
 
-			@Override
-			public void onFailure(Throwable throwable) {
-				Log.e(TAG, "Get policy error", throwable);
-			}
-		});
-	}
 
 	public String getPrivacyUrl() {
 		return privacyUrl == null ? null : privacyUrl.trim();
