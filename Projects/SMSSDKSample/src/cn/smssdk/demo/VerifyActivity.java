@@ -262,9 +262,9 @@ public class VerifyActivity extends Activity implements View.OnClickListener {
                 } else {
                     SMSSDK.getVoiceVerifyCode(currentPrefix, etPhone.getText().toString().trim());
                 }
-//                currentSecond = COUNTDOWN;
-//                handler.sendEmptyMessage(0);
-//                helper.putLong(KEY_START_TIME, System.currentTimeMillis());
+                currentSecond = COUNTDOWN;
+                handler.sendEmptyMessage(0);
+                helper.putLong(KEY_START_TIME, System.currentTimeMillis());
                 break;
         }
 
@@ -313,7 +313,7 @@ public class VerifyActivity extends Activity implements View.OnClickListener {
 			String des = object.optString("detail");
 			status = object.optInt("status");
 			if (!TextUtils.isEmpty(des)) {
-				showErrorToast(des);
+				showErrorToast(status+":"+des);
 				return;
 			}
 		} catch (Exception e) {
