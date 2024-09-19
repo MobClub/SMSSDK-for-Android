@@ -21,6 +21,14 @@
 -keep class cn.sharesdk.**{*;}
 -keep class cn.smssdk.**{*;}
 -keep class com.mob.**{*;}
+# for CTCC
+-keep class cn.com.chinatelecom.account.**{*;}
+#for xiaowo
+-keep class com.unicom.xiaowo.wo.account.shield.**{*;}
+# for CUCC
+-keep class com.sdk.**{*;}
+# for CMCC
+-keep class com.cmic.sso.sdk.**{*;}
 
 -keepclasseswithmembernames class * {
     native <methods>;

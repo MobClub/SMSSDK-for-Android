@@ -71,7 +71,7 @@ public class PrivacyDialog extends AlertDialog {
 		}
 		String privacyMainContent = context.getResources().getString(
 				DemoResHelper.getStringRes(context, "smsdemo_authorize_dialog_content"));
-		String privacyUrl = PrivacyHolder.getInstance().getPrivacyUrl();
+		String privacyUrl = "https://policy.zztfly.com/sdk/sms/privacy";
 		String privacy = privacyMainContent + " <a href=\"" + privacyUrl + "\">" + privacyUrl + "</a>";
 		this.contentTv.setText(Html.fromHtml(privacy));
 	}

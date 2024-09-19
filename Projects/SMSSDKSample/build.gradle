@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "cn.smssdk.demo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "3.6.2"
@@ -51,6 +51,14 @@ android {
     }
 }
 
+try {
+    String tmpParams = getProperty("custom_params")
+    String[] params = tmpParams.split(",")
+    params.each {item->
+		MobSDK.spEdition(item)
+    }
+} catch(Throwable t) {}
+
 // 在MobSDK的扩展中注册SMSSDK的相关信息
 MobSDK {
 //    domain 'jp'
@@ -60,6 +68,7 @@ MobSDK {
     SMSSDK {
         // 若使用GUI的自动填充验证码功能，需打开此设置
 //        autoSMS true
+        mobileAuth true
     }
 }
 
